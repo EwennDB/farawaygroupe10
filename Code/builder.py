@@ -1,9 +1,9 @@
 import json
 """
-with open("sanctuaire.txt") as file:
+with open("Data/sanctuaire.txt") as file:
     lines = [line.rstrip() for line in file]
     print(lines)
-    with open("sanctuaire.json", "w") as f2:
+    with open("Data/sanctuaire.json", "w") as f2:
         data = []
         for i in lines:
             lst = []
@@ -33,10 +33,10 @@ with open("sanctuaire.txt") as file:
         json.dump(data, f2)
 """
 """
-with open("cards.txt") as file:
+with open("Data/cards.txt") as file:
     lines = [line.rstrip() for line in file]
     print(lines)
-    with open("cards.json", "w") as f2:
+    with open("Data/cards.json", "w") as f2:
         data = []
         k = 1
         for i in lines:
