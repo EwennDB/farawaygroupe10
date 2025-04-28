@@ -1,4 +1,4 @@
-from "helper.py" import 
+from helper.py import add_dict
 
 class Board:
     def __init__(self):
@@ -16,7 +16,8 @@ class Board:
         self.cards.append(card)
     
     def add_card_args(self, card):
-        self.couleurs = add
+        '''not fait'''
+        pass
 
     def reveal_card(self):
         '''revele les cartes et compte leurs scores'''
