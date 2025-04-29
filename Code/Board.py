@@ -1,3 +1,4 @@
+from Card import Card
 from helper import add_dict
 
 class Board:
@@ -18,12 +19,17 @@ class Board:
         self.pos += 1
     
     def add_card_args(self, card):
-        '''not fait'''
-        pass
+        '''ajoue les attributs des cartes au plateau'''
+        self.merveilles = add_dict(self.merveilles, card.merveilles)
+        self.nuits += card.nuit
+        self.indices += card.indice
+        if not card.couleur is None:
+            self.couleurs[card.couleur] += 1
 
     def reveal_card(self):
         '''revele les cartes et compte leurs scores'''
         self.score += self.cards[self.pos].calc_score(self)
+        self.add_card_args(self.cards[self.pos])
         self.pos -= 1
 
     def __repr__(self):

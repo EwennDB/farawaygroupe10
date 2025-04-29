@@ -16,5 +16,7 @@ if __name__ == '__main__':
         test.place_card(i)
 
     test.reveal_card()
+    test.reveal_card()
+    test.reveal_card()
 
-    print(test)
+    print(test.nuits, test.indices, test.couleurs, test.merveilles)
