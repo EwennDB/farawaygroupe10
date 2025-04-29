@@ -18,5 +18,10 @@ if __name__ == '__main__':
     test.reveal_card()
     test.reveal_card()
     test.reveal_card()
+    test.reveal_card()
+    test.reveal_card()
+    test.reveal_card()
+    test.reveal_card()
+    test.reveal_card()
 
     print(test.nuits, test.indices, test.couleurs, test.merveilles)
