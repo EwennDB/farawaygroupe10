@@ -21,7 +21,3 @@ class Card:
                 return self.func(board)
 
         return 0
-
-v = Card(1, "r", False, False, {"p" : 1, "c" : 1})
-
-v.calc_score(0, 0)

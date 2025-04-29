@@ -1,8 +1,9 @@
-from helper.py import add_dict
+from helper import add_dict
 
 class Board:
     def __init__(self):
         self.cards = []
+        self.sanctuaries = []
     
         self.couleurs = {"r" : 0, "b" : 0, "v" : 0, "j" : 0}
         self.nuits = 0
@@ -14,6 +15,7 @@ class Board:
     def place_card(self, card):
         '''place une carte sur le plateau'''
         self.cards.append(card)
+        self.pos += 1
     
     def add_card_args(self, card):
         '''not fait'''
@@ -22,3 +24,4 @@ class Board:
     def reveal_card(self):
         '''revele les cartes et compte leurs scores'''
         self.cards[self.pos].calc_score(self)
+        self.pos -= 1
