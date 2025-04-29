@@ -11,7 +11,7 @@ def get_5_points(board):
 ## FONCTION SCALAIRES
 def get_2_par_nuit(board):
     '''2 points par cartes nuits'''
-    return board.nuit*2
+    return board.nuits*2
 
 def get_3_par_nuit(board):
     '''3 points par cartes nuits'''
@@ -51,3 +51,8 @@ def get_3_par_pierre_si_2_chimeres(board):
         val += 2*i.merveilles["p"]
     
     return val
+
+functions = {
+    "" : None,
+    "get_2_par_nuit" : get_2_par_nuit
+}
