@@ -10,7 +10,7 @@ class Board:
         self.indices = 0
         self.merveilles = {"p" : 0, "cha" : 0, "chi" : 0}
         self.score = 0
-        self.pos = 0
+        self.pos = -1
     
     def place_card(self, card):
         '''place une carte sur le plateau'''
@@ -23,11 +23,11 @@ class Board:
 
     def reveal_card(self):
         '''revele les cartes et compte leurs scores'''
-        self.cards[self.pos].calc_score(self)
+        self.score += self.cards[self.pos].calc_score(self)
         self.pos -= 1
 
     def __repr__(self):
-
+        '''représente le board'''
         chaine = "score : "
         chaine += str(self.score)
 
