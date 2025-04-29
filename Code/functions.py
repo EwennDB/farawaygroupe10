@@ -1,11 +1,11 @@
 ## FONCTION SIMPLES
-def get_2_points(board):
+def get_2(board):
     return 2
 
-def get_4_points(board):
+def get_4(board):
     return 4
 
-def get_5_points(board):
+def get_5(board):
     return 5
 
 ## FONCTION SCALAIRES
