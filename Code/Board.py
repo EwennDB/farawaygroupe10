@@ -25,3 +25,24 @@ class Board:
         '''revele les cartes et compte leurs scores'''
         self.cards[self.pos].calc_score(self)
         self.pos -= 1
+
+    def __repr__(self):
+
+        chaine = "score : "
+        chaine += str(self.score)
+
+        chaine += " pos : " + str(self.pos)
+
+        chaine += " cards : "
+
+        for i in self.cards:
+            chaine += str(i.value)
+            chaine += "-"
+        
+        chaine += " sanctuaries : "
+
+        for i in self.sanctuaries:
+            chaine += str(i.value)
+            chaine += "-"
+        
+        return chaine

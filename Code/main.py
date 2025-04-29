@@ -1,5 +1,6 @@
 from Board import Board
 from Card import Card
+from helper import make_cards, make_sanctuaries
 
 if __name__ == '__main__':
 
@@ -14,14 +15,14 @@ if __name__ == '__main__':
         while int(lst_card[c]) < 101:
             c += 1
         
-        lst_sanctuary = lst_card[c:]
-        lst_card = lst_card[:c]
+        lst_sanctuaries = lst_card[c:]
+        lst_cards = lst_card[:c]
 
-    print(lst_card, lst_sanctuary)
+    cards = make_cards(lst_cards)
+    sanctuaries = make_sanctuaries(lst_sanctuaries)
 
     test = Board()
 
-    for i in lst_card[:8]:
-        test.place_card(i)
-    
-    print(test.cards)
+    test.place_card(cards[1])
+
+    print(test.cards[0].calc_score(test))
