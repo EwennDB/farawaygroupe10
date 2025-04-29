@@ -7,21 +7,19 @@ if __name__ == '__main__':
 
     lst_regions, lst_sanctuaries = make_value_lists("../Sujet/Instances_hors_compétition/8_7_a.txt")
 
-    cards = make_regions(lst_regions)
-    sanctuaries = make_sanctuaries(lst_sanctuaries)
+    lst = [i for i in range(1, 69)]
+
+    cards = make_regions(lst)
 
     test = Board()
 
-    for i in cards:
-        test.place_card(i)
+    for i in range(1, len(cards)+1):
+        test.place_card(cards[-i])
 
-    test.reveal_card()
-    test.reveal_card()
-    test.reveal_card()
-    test.reveal_card()
-    test.reveal_card()
-    test.reveal_card()
-    test.reveal_card()
-    test.reveal_card()
+    print(test)
 
-    print(test.nuits, test.indices, test.couleurs, test.merveilles)
+    while(test.pos != -1):
+        test.reveal_card()
+    
+    print(test.merveilles, test.score)
+    

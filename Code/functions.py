@@ -58,11 +58,11 @@ def get_2_par_nuit(board):
 
 def get_3_par_nuit(board):
     '''3 points par cartes nuits'''
-    return board.nuit*3
+    return board.nuits*3
 
 def get_4_par_nuit(board):
     '''3 points par cartes nuits'''
-    return board.nuit*4
+    return board.nuits*4
 
 # Indices
 def get_1_par_indice(board):
@@ -72,6 +72,14 @@ def get_1_par_indice(board):
 def get_2_par_indice(board):
     '''2 points par indices'''
     return board.indices*2
+
+def get_3_par_indice(board):
+    '''3 points par indices'''
+    return board.indices*3
+
+def get_4_par_indice(board):
+    '''4 points par indices'''
+    return board.indices*4
 
 # Merveilles
 def get_1_par_pierre(board):
@@ -271,6 +279,7 @@ functions = {
     "get_2" : get_2,
     "get_4" : get_4,
     "get_5" : get_5,
+    "get_7" : get_7,
     "get_8" : get_8,
     "get_9" : get_9,
     "get_10" : get_10,
@@ -291,6 +300,8 @@ functions = {
 
     "get_1_par_indice" : get_1_par_indice,
     "get_2_par_indice" : get_2_par_indice,
+    "get_3_par_indice" : get_3_par_indice,
+    "get_4_par_indice" : get_4_par_indice,
 
     "get_1_par_pierre" : get_1_par_pierre,
     "get_2_par_pierre" : get_2_par_pierre,
@@ -325,6 +336,18 @@ functions = {
     "get_1_par_jaune" : get_1_par_jaune,
     "get_2_par_jaune" : get_2_par_jaune,
     "get_3_par_jaune" : get_3_par_jaune,
+
+    "get_1_par_jaune_ou_rouge" : get_1_par_jaune_ou_rouge,
+    "get_2_par_jaune_ou_rouge" : get_2_par_jaune_ou_rouge,
+    "get_3_par_jaune_ou_rouge" : get_3_par_jaune_ou_rouge,
+
+    "get_1_par_jaune_ou_vert" : get_1_par_jaune_ou_vert,
+    "get_2_par_jaune_ou_vert" : get_2_par_jaune_ou_vert,
+    "get_3_par_jaune_ou_vert" : get_3_par_jaune_ou_vert,
+
+    "get_1_par_jaune_ou_bleu" : get_1_par_jaune_ou_bleu,
+    "get_2_par_jaune_ou_bleu" : get_2_par_jaune_ou_bleu,
+    "get_3_par_jaune_ou_bleu" : get_3_par_jaune_ou_bleu,
 
     "get_1_par_rouge_ou_bleu" : get_1_par_rouge_ou_bleu,
     "get_1_par_vert_ou_rouge" : get_1_par_vert_ou_rouge,
