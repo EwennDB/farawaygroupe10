@@ -1,4 +1,4 @@
-from helper.py import add_dict
+from helper import add_dict
 
 class Board:
     def __init__(self):
