@@ -23,7 +23,6 @@ class Board:
 
     def reveal_card(self):
         '''revele les cartes et compte leurs scores'''
-        print(self.pos)
         self.score += self.cards[self.pos].calc_score(self)
         self.pos -= 1
 
