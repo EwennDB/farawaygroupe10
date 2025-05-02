@@ -52,6 +52,10 @@ def get_24(board):
 
 ## FONCTION SCALAIRES
 # Nuits
+def get_1_par_nuit(board):
+    '''1 point par cartes nuits'''
+    return board.nuits
+
 def get_2_par_nuit(board):
     '''2 points par cartes nuits'''
     return board.nuits*2
@@ -294,6 +298,7 @@ functions = {
     "get_20" : get_20,
     "get_24" : get_24,
 
+    "get_1_par_nuit" : get_1_par_nuit,
     "get_2_par_nuit" : get_2_par_nuit,
     "get_3_par_nuit" : get_3_par_nuit,
     "get_4_par_nuit" : get_4_par_nuit,
