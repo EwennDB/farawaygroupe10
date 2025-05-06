@@ -1,5 +1,5 @@
 from Card import Card
-from helper import add_dict
+from helper import add_dict, make_regions
 from random import randint
 
 class Board:
@@ -14,16 +14,25 @@ class Board:
         self.merveilles = {"p" : 0, "cha" : 0, "chi" : 0}
         self.score = 0
         self.pos = -1
-
+        self.nb_sanc = 0
     
-    def place_card(self, card):
+    def place_card(self, card, sanc = None):
         '''place une carte sur le plateau et vérifie si l'on peut prendre un sanctuaire'''
         self.cards.append(card)
         self.pos += 1
         print(card.value, self.cards[self.pos - 1].value)
         if self.pos != -1 and card.value > self.cards[self.pos - 1].value:
-            self.add_sanctuary()
+            self.nb_sanc += 1
     
+    def place_all(self, lst):
+        lst = make_regions(lst)
+        for card in lst:
+            self.place_card(card)
+
+    def reveal_all(self):
+        for card in self.cards:
+            self.reveal_card()
+
     def add_card_args(self, card):
         '''ajoue les attributs des cartes au plateau'''
         self.merveilles = add_dict(self.merveilles, card.merveilles)
@@ -43,12 +52,11 @@ class Board:
         for sanc in self.sanctuaries:
             self.score += sanc.calc_score(self)
 
-    def add_sanctuary(self):
+    def add_sanctuary(self, sanctuary):
         '''ajoute un sanctuaire au hasard au plateau'''
-        id = randint(0, len(self.sanctuaire_dispo) - 1)
-        self.sanctuaries.append(self.sanctuaire_dispo[id])
-        self.add_card_args(self.sanctuaries[len(self.sanctuaries) - 1])
-        self.sanctuaire_dispo.pop(id)
+        self.sanctuaries.append(sanctuary)
+        self.add_card_args(sanctuary)
+        self.sanctuaire_dispo.remove(sanctuary)
 
     def __repr__(self):
         '''représente le board'''
