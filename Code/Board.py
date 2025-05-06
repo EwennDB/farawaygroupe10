@@ -14,6 +14,7 @@ class Board:
         self.merveilles = {"p" : 0, "cha" : 0, "chi" : 0}
         self.score = 0
         self.pos = -1
+
     
     def place_card(self, card):
         '''place une carte sur le plateau et vérifie si l'on peut prendre un sanctuaire'''
