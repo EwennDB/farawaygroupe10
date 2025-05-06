@@ -227,7 +227,7 @@
       "chi": 0
     },
     "get_3_par_pierre",
-    ""
+    "si_2_chimere"
   ],
   [
     18,
@@ -266,7 +266,7 @@
       "chi": 0
     },
     "get_2_par_nuit",
-    ""
+    "si_1_pierre"
   ],
   [
     21,
@@ -279,7 +279,7 @@
       "chi": 0
     },
     "get_8",
-    ""
+    "si_2_pierre"
   ],
   [
     22,
@@ -318,7 +318,7 @@
       "chi": 0
     },
     "get_2_par_nuit",
-    ""
+    "si_1_chimere"
   ],
   [
     25,
@@ -422,7 +422,7 @@
       "chi": 1
     },
     "get_7",
-    ""
+    "si_3_pierre"
   ],
   [
     33,
@@ -448,7 +448,7 @@
       "chi": 1
     },
     "get_3_par_chimere",
-    ""
+    "si_2_pierre"
   ],
   [
     35,
@@ -474,7 +474,7 @@
       "chi": 0
     },
     "get_4_par_chardon",
-    ""
+    "si_2_chimere"
   ],
   [
     37,
@@ -487,7 +487,7 @@
       "chi": 0
     },
     "get_3_par_nuit",
-    ""
+    "si_1_chardon"
   ],
   [
     38,
@@ -500,7 +500,7 @@
       "chi": 0
     },
     "get_3_par_indice",
-    ""
+    "si_1_chimere_et_1_chardon"
   ],
   [
     39,
@@ -513,7 +513,7 @@
       "chi": 0
     },
     "get_9",
-    ""
+    "si_2_chimere"
   ],
   [
     40,
@@ -526,7 +526,7 @@
       "chi": 0
     },
     "get_3_par_nuit",
-    ""
+    "si_1_pierre_et_1_chimere_et_1_chardon"
   ],
   [
     41,
@@ -539,7 +539,7 @@
       "chi": 0
     },
     "get_4_par_nuit",
-    ""
+    "si_2_pierre_et_1_chimere"
   ],
   [
     42,
@@ -552,7 +552,7 @@
       "chi": 0
     },
     "get_2_par_jaune_ou_vert",
-    ""
+    "si_1_pierre_et_1_chimere"
   ],
   [
     43,
@@ -578,7 +578,7 @@
       "chi": 0
     },
     "get_2_par_jaune_ou_bleu",
-    ""
+    "si_1_pierre_et_1_chardon"
   ],
   [
     45,
@@ -591,7 +591,7 @@
       "chi": 0
     },
     "get_13",
-    ""
+    "si_3_chimere"
   ],
   [
     46,
@@ -604,7 +604,7 @@
       "chi": 0
     },
     "get_10",
-    ""
+    "si_2_pierre_et_1_chimere"
   ],
   [
     47,
@@ -617,7 +617,7 @@
       "chi": 0
     },
     "get_2_par_jaune_ou_rouge",
-    ""
+    "si_1_chimere_et_1_chardon"
   ],
   [
     48,
@@ -643,7 +643,7 @@
       "chi": 0
     },
     "get_12",
-    ""
+    "si_2_pierre_et_1_chardon"
   ],
   [
     50,
@@ -656,7 +656,7 @@
       "chi": 0
     },
     "get_4_par_vert",
-    ""
+    "si_2_chardon"
   ],
   [
     51,
@@ -669,7 +669,7 @@
       "chi": 0
     },
     "get_14",
-    ""
+    "si_4_pierre"
   ],
   [
     52,
@@ -682,7 +682,7 @@
       "chi": 0
     },
     "get_4_par_chimere",
-    ""
+    "si_3_pierre"
   ],
   [
     53,
@@ -695,7 +695,7 @@
       "chi": 1
     },
     "get_4_par_rouge",
-    ""
+    "si_2_chardon"
   ],
   [
     54,
@@ -708,7 +708,7 @@
       "chi": 1
     },
     "get_4_par_indice",
-    ""
+    "si_2_chardon"
   ],
   [
     55,
@@ -721,7 +721,7 @@
       "chi": 0
     },
     "get_3_par_pierre",
-    ""
+    "si_1_chimere_et_2_chardon"
   ],
   [
     56,
@@ -734,7 +734,7 @@
       "chi": 0
     },
     "get_4_par_bleu",
-    ""
+    "si_1_pierre_et_2_chimere"
   ],
   [
     57,
@@ -747,7 +747,7 @@
       "chi": 0
     },
     "get_4_par_pierre",
-    ""
+    "si_3_chardon"
   ],
   [
     58,
@@ -760,7 +760,7 @@
       "chi": 0
     },
     "get_3_par_indice",
-    ""
+    "si_3_chimere"
   ],
   [
     59,
@@ -773,7 +773,7 @@
       "chi": 0
     },
     "get_3_par_jaune_ou_rouge",
-    ""
+    "si_1_pierre_et_3_chimere"
   ],
   [
     60,
@@ -786,7 +786,7 @@
       "chi": 0
     },
     "get_16",
-    ""
+    "si_2_pierre_et_2_chimere"
   ],
   [
     61,
@@ -799,7 +799,7 @@
       "chi": 0
     },
     "get_17",
-    ""
+    "si_4_chimere"
   ],
   [
     62,
@@ -812,7 +812,7 @@
       "chi": 0
     },
     "get_3_par_jaune_ou_bleu",
-    ""
+    "si_3_chardon"
   ],
   [
     63,
@@ -825,7 +825,7 @@
       "chi": 0
     },
     "get_15",
-    ""
+    "si_2_chimere_et_1_chardon"
   ],
   [
     64,
@@ -838,7 +838,7 @@
       "chi": 0
     },
     "get_18",
-    ""
+    "si_2_pierre_et_2_chardon"
   ],
   [
     65,
@@ -851,7 +851,7 @@
       "chi": 0
     },
     "get_3_par_jaune_ou_vert",
-    ""
+    "si_3_chardon"
   ],
   [
     66,
@@ -864,7 +864,7 @@
       "chi": 0
     },
     "get_20",
-    ""
+    "si_4_pierre"
   ],
   [
     67,
@@ -877,7 +877,7 @@
       "chi": 0
     },
     "get_19",
-    ""
+    "si_2_chimere_et_2_chardon"
   ],
   [
     68,
@@ -890,6 +890,6 @@
       "chi": 0
     },
     "get_24",
-    ""
+    "si_5_pierre"
   ]
 ]
