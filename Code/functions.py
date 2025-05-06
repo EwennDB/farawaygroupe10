@@ -261,7 +261,7 @@ def get_4_par_ensemble(board):
     '''4 points par ensemble de carte
     (ensemble = 1 carte de chaque couleur)'''
     min = 4
-    for i in board.merveilles.values():
+    for i in board.couleurs.values():
         if i < min:
             min = i
 
@@ -271,7 +271,7 @@ def get_10_par_ensemble(board):
     '''4 points par ensemble de carte
     (ensemble = 1 carte de chaque couleur)'''
     min = 4
-    for i in board.merveilles.values():
+    for i in board.couleurs.values():
         if i < min:
             min = i
 

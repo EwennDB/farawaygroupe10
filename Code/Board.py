@@ -33,9 +33,14 @@ class Board:
 
     def reveal_card(self):
         '''revele les cartes et compte leurs scores'''
-        self.score += self.cards[self.pos].calc_score(self)
         self.add_card_args(self.cards[self.pos])
+        self.score += self.cards[self.pos].calc_score(self)
         self.pos -= 1
+
+    def calc_sanctuary_score(self):
+        '''calcule le score des sanctuaires'''
+        for sanc in self.sanctuaries:
+            self.score += sanc.calc_score(self)
 
     def add_sanctuary(self):
         '''ajoute un sanctuaire au hasard au plateau'''

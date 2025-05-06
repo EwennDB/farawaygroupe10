@@ -108,6 +108,8 @@ def si_1_pierre_et_1_chimere_et_1_chardon(board):
 
 ## ÉQUIVALENT DE FONCTION
 conditions = {
+    "" : None,
+
     "si_1_pierre" : si_1_pierre,
     "si_2_pierre" : si_2_pierre,
     "si_3_pierre" : si_3_pierre,

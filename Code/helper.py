@@ -2,6 +2,7 @@ import copy
 import json
 from Card import Card
 from functions import functions
+from conditions import conditions
 
 def add_dict(dict1, dict2):
     dict3 = copy.deepcopy(dict2)
@@ -23,7 +24,7 @@ def make_regions(lst) -> list:
         for i in lst:
             args = data[int(i)]
 
-            lst_cards.append(Card(args[0], args[1], args[2], args[3], args[4], functions[args[5]]))
+            lst_cards.append(Card(args[0], args[1], args[2], args[3], args[4], functions[args[5]], conditions[args[6]]))
 
     return lst_cards
 
@@ -37,7 +38,7 @@ def make_sanctuaries(lst) -> list:
         for i in lst:
             args = data[int(i)-100]
 
-            lst_sanctuaries.append(Card(args[0], args[1], args[2], args[3], args[4], args[5]))
+            lst_sanctuaries.append(Card(args[0], args[1], args[2], args[3], args[4], functions[args[5]]))
 
     return lst_sanctuaries
 
