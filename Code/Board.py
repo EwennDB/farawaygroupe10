@@ -2,9 +2,10 @@ from Card import Card
 from helper import add_dict
 
 class Board:
-    def __init__(self):
+    def __init__(self, sanctuaire_dispo):
         self.cards = []
         self.sanctuaries = []
+        self.sanctuaire_dispo = [sanctuaire_dispo]
     
         self.couleurs = {"r" : 0, "b" : 0, "v" : 0, "j" : 0}
         self.nuits = 0
@@ -14,9 +15,11 @@ class Board:
         self.pos = -1
     
     def place_card(self, card):
-        '''place une carte sur le plateau'''
+        '''place une carte sur le plateau et vérifie si l'on peut prendre un sanctuaire'''
         self.cards.append(card)
         self.pos += 1
+        if self.pos != -1 and card.value > self.cards[self.pos]:
+            self.add_sanctuary(self)
     
     def add_card_args(self, card):
         '''ajoue les attributs des cartes au plateau'''
@@ -31,6 +34,10 @@ class Board:
         self.score += self.cards[self.pos].calc_score(self)
         self.add_card_args(self.cards[self.pos])
         self.pos -= 1
+
+    def add_sanctuary(self):
+        '''ajoute un sanctuaire au plateau'''
+        self.sanctuaries.append()
 
     def __repr__(self):
         '''représente le board'''

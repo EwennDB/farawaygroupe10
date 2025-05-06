@@ -11,7 +11,7 @@ if __name__ == '__main__':
 
     cards = make_regions(lst)
 
-    test = Board()
+    test = Board(lst_sanctuaries)
 
     for i in range(1, len(cards)+1):
         test.place_card(cards[-i])
