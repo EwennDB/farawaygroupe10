@@ -22,4 +22,15 @@ if __name__ == '__main__':
         test.reveal_card()
     
     print(test.merveilles, test.score)
+
+    test = Board(make_sanctuaries(lst_sanctuaries))
+    cards = make_regions(lst_regions)
+    for i in range(8):
+        test.place_card(cards[i])
+
+    print(test)
+
+    while(test.pos != -1):
+        test.reveal_card()
     
+    print(test.merveilles, test.score)
