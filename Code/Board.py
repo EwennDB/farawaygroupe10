@@ -1,5 +1,5 @@
 from Card import Card
-from helper import add_dict
+from helper import add_dict, make_regions
 from random import randint
 
 class Board:
@@ -23,6 +23,16 @@ class Board:
         print(card.value, self.cards[self.pos - 1].value)
         if self.pos != -1 and card.value > self.cards[self.pos - 1].value:
             self.nb_sanc += 1
+    
+    def place_all(self, lst):
+        lst = make_regions(lst)
+        for card in lst:
+            self.place_card(card)
+
+    def reveal_all(self):
+        for card in self.cards:
+            self.reveal_card()
+
     def add_card_args(self, card):
         '''ajoue les attributs des cartes au plateau'''
         self.merveilles = add_dict(self.merveilles, card.merveilles)
