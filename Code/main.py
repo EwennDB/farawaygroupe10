@@ -6,7 +6,7 @@ from random import randint
 
 if __name__ == '__main__':
 
-    lst_regions, lst_sanctuaries = make_value_lists("../Sujet/Instances_hors_compétition/8_7_a.txt")
+    lst_regions, lst_sanctuaries = make_value_lists("../Sujet/Instances_hors_compétition/8.7.a.txt")
 
     """lst = [i for i in range(1, 69)]
 
