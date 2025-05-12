@@ -75,3 +75,4 @@ def brute_force(path_instance) :
                                         
     print(best)
 
+brute_force("../Sujet/Instances_hors_compétition/8_7_a.txt")
