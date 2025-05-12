@@ -8,6 +8,9 @@ class Card:
         self.func = func
         self.condition = condition
     
+    def __eq__(self, card):
+        return self.value == card.value
+
     def calc_score(self, board):
         '''calcule le score de la carte
         appelle la fonction si elle existe

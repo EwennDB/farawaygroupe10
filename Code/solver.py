@@ -78,6 +78,14 @@ def brute_force(path_instance) :
                                                                                     if lst[i][j][k][l][m][n][o].score > best.score:
                                                                                         best = lst[i][j][k][l][m][n][o]
                                                                                     lst[i][j][k][l][m][n][o].clear_sanc()
+
+                                                                                lst[i][j][k][l][m][n][o].clear_last_sanctuary()
+                                                                            lst[i][j][k][l][m][n][o].clear_last_sanctuary()
+                                                                        lst[i][j][k][l][m][n][o].clear_last_sanctuary()
+                                                                    lst[i][j][k][l][m][n][o].clear_last_sanctuary()
+                                                                lst[i][j][k][l][m][n][o].clear_last_sanctuary()
+                                                            lst[i][j][k][l][m][n][o].clear_last_sanctuary()
+                                                        lst[i][j][k][l][m][n][o].clear_last_sanctuary()
                                         
     print(best)
 
