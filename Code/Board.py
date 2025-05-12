@@ -60,7 +60,7 @@ class Board:
     def clear_last_sanctuary(self):
         for sanc in self.sanctuaries:
             self.score -= sanc.calc_score(self)
-        self.sanctuaires_dispo.append(self.sanctuaires.pop(len(self.sanctuaries) - 1))
+        self.sanctuaire_dispo.append(self.sanctuaries.pop(len(self.sanctuaries) - 1))
         self.calc_sanctuary_score()
 
     def add_sanctuary(self, sanctuary):
