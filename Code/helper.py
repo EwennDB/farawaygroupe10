@@ -57,5 +57,25 @@ def make_value_lists(filepath : str) -> tuple:
         
         return lst_card[:c], lst_card[c:]
 
+def add_with_order(lst : list, val : int):
+    '''lst est supposée ordonnée
+    rajoute la valeur à la liste de manière à ce que la liste reste triée'''
+    if lst == []:
+        return [val]
+    if len(lst) == 1:
+        if val > lst[0]:
+            lst.append(val)
+        else:
+            lst = [val] + lst
+    else:
+        ind = int(len(lst)/2)
+        middle = lst[ind]
+        if middle < val:
+            return lst[:ind]+add_with_order(lst[ind:], val)
+        else:
+            return add_with_order(lst[:ind], val)+lst[ind:]
+    return lst
+
+
 def nnnnnnnnn():
     pass

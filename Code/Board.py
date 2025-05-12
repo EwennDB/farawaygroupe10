@@ -20,7 +20,6 @@ class Board:
         '''place une carte sur le plateau et vérifie si l'on peut prendre un sanctuaire'''
         self.cards.append(card)
         self.pos += 1
-        print(card.value, self.cards[self.pos - 1].value)
         if self.pos != -1 and card.value > self.cards[self.pos - 1].value:
             self.nb_sanc += 1
     
