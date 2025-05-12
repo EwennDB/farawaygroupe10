@@ -54,3 +54,4 @@ def brute_force(path_instance) :
                                     sanc_scores = []
     print(best)
 
+brute_force("../Sujet/Instances_hors_compétition/8_7_a.txt")
