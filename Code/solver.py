@@ -46,6 +46,7 @@ def brute_force(path_instance) :
                                     for q in range(len(sanctuaries)):
                                         if lst[i][j][k][l][m][n][o].nb_sanc > 0:
                                             lst[i][j][k][l][m][n][o].add_sanctuary(sanctuaries2.pop(q))  
+                                        
                                         for r in range(len(sanctuaries)-1):
                                             if lst[i][j][k][l][m][n][o].nb_sanc > 1:
                                                 lst[i][j][k][l][m][n][o].add_sanctuary(sanctuaries2.pop(r))
@@ -69,9 +70,14 @@ def brute_force(path_instance) :
                                                                                 for w in range(len(sanctuaries)-6):
                                                                                     if lst[i][j][k][l][m][n][o].nb_sanc > 6:
                                                                                         lst[i][j][k][l][m][n][o].add_sanctuary(sanctuaries2.pop(w))
+                                                                                    
                                                                                     sanctuaries2 = copy.deepcopy(sanctuaries)
                                                                                     lst[i][j][k][l][m][n][o].reveal_all()
-                                                    
+                                                                                    for x in lst[i][j][k][l][m][n][o].nb_sanc:
+                                                                                        lst[i][j][k][l][m][n][o].calc_sanctuary_score()
+                                                                                    if lst[i][j][k][l][m][n][o].score > best.score:
+                                                                                        best = lst[i][j][k][l][m][n][o]
+                                                                                    lst[i][j][k][l][m][n][o].clear_sanc()
                                         
     print(best)
 
