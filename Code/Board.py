@@ -58,8 +58,10 @@ class Board:
             self.sanctuaire_dispo.append(self.sanctuaries.pop(i))
 
     def clear_one_sanc(self):
-        self.score -= self.sanctuaries[len(self.sanctuaries) - 1].calc_score(self)
+        for sanc in self.sanctuaries:
+            self.score -= sanc.calc_score(self)
         self.sanctuaires_dispo.append(self.sanctuaires.pop(len(self.sanctuaries)))
+        self.calc_sanctuary_score()
 
     def add_sanctuary(self, sanctuary):
         '''ajoute un sanctuaire au hasard au plateau'''
