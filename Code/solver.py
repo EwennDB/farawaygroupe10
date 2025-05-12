@@ -43,15 +43,14 @@ def brute_force(path_instance) :
                                     lst[i][j][k][l][m][n][o].place_card(regions2.pop(o))
                                     lst[i][j][k][l][m][n][o].place_card(regions2.pop(p))
                                     regions2 = copy.deepcopy(regions)
+
                                     for q in range(len(sanctuaries)):
                                         if lst[i][j][k][l][m][n][o].nb_sanc > 0:
                                             lst[i][j][k][l][m][n][o].add_sanctuary(lst[i][j][k][l][m][n][o].sanctuaire_dispo[q])
-                                            print(lst[i][j][k][l][m][n][o].sanctuaries)
                                         
                                         for r in range(len(sanctuaries)-1):
                                             if lst[i][j][k][l][m][n][o].nb_sanc > 1:
                                                 lst[i][j][k][l][m][n][o].add_sanctuary(lst[i][j][k][l][m][n][o].sanctuaire_dispo[r])
-                                                print(lst[i][j][k][l][m][n][o].sanctuaries)
                                             
                                             for s in range(len(sanctuaries)-2):
                                                 if lst[i][j][k][l][m][n][o].nb_sanc > 2:
@@ -73,6 +72,7 @@ def brute_force(path_instance) :
                                                                 if lst[i][j][k][l][m][n][o].nb_sanc > 6:
                                                                     lst[i][j][k][l][m][n][o].add_sanctuary(lst[i][j][k][l][m][n][o].sanctuaire_dispo[w])
 
+                                                                print
                                                                 lst[i][j][k][l][m][n][o].reveal_all()
 
                                                                 for _ in range(lst[i][j][k][l][m][n][o].nb_sanc):
@@ -80,7 +80,7 @@ def brute_force(path_instance) :
 
                                                                 if lst[i][j][k][l][m][n][o].score > best.score:
                                                                     best = lst[i][j][k][l][m][n][o]
-                                                                    #print(best)
+                                                                    print(best)
                                                                 
                                                                 lst[i][j][k][l][m][n][o].couleurs = {"r" : 0, "b" : 0, "v" : 0, "j" : 0}
                                                                 lst[i][j][k][l][m][n][o].nuits = 0
@@ -110,7 +110,7 @@ def brute_force(path_instance) :
                                         val = lst[i][j][k][l][m][n][o].clear_last_sanctuary()
                                         if not val is None:
                                             sanctuaries2.append(val)
-                                        exit()
+ 
                                         
     print(best)
 
