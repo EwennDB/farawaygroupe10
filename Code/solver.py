@@ -88,13 +88,13 @@ def gradient_descent(board):
     '''trouve le meilleur arrangement des cartes régions et place les bons sanctuaires
     Nécessite un board'''
     d_score = 0
-    swap_1 = randint(8)
-    swap_2 = randint(8)
+    swap_1 = randint(0,8)
+    swap_2 = randint(0,8)
 
     o_score = board.evaluate()
 
     while swap_1 == swap_2:
-        swap_2 = randint(8)
+        swap_2 = randint(0,8)
 
     tmp = board.cards[swap_1].copy()
     board.cards[swap_1] = board.cards[swap_2]
@@ -102,8 +102,3 @@ def gradient_descent(board):
 
     if board.evaluate() > o_score:
         print(f"swapped cards nb {swap_1} and {swap_2}")
-
-
-# virer_inutile("../Sujet/Instances_hors_compétition/test.txt")
-brute_force("../Sujet/Instances_hors_compétition/8_7_a.txt")
-
