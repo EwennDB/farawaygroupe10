@@ -1,6 +1,7 @@
 from Card import Card
 from helper import add_dict, make_regions
 from random import randint
+from copy import deepcopy
 
 class Board:
     def __init__(self, sanctuaire_dispo):
@@ -73,6 +74,23 @@ class Board:
         self.sanctuaries.append(sanctuary)
         self.add_card_args(sanctuary)
         self.sanctuaire_dispo.remove(sanctuary)
+
+    def copy(self):
+        return deepcopy(self)
+
+    def evaluate_board(self):
+        b = self.copy()
+
+        for sanc in b.sanctuaries:
+            b.add_card_args(sanc)
+
+        for card in b.cards:
+            b.reveal_card()
+
+        for sanc in b.sanctuaries:
+            b.score += sanc.calc_score(b)
+
+        return b.score
 
     def __repr__(self):
         '''représente le board'''
