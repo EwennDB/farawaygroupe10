@@ -9,8 +9,8 @@ import copy
 
 if __name__ == '__main__':
 
-    lst_regions = [19,66,68,39,51,16,32,38]
-    lst_sanctuaries = [102,104,107,117,121]
+    lst_regions = [16,19,32,38,39,51,66,38]
+    lst_sanctuaries = [102,103,104,105,106,107,108]
     
     test = Board(make_sanctuaries(lst_sanctuaries))
     cards = make_regions(lst_regions)
@@ -20,5 +20,7 @@ if __name__ == '__main__':
 
     for i in range(test.nb_sanc):
         test.add_sanctuary(test.sanctuaire_dispo[0])
+
+    print(test)
 
     gradient_descent(test)

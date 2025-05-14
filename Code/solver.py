@@ -87,18 +87,51 @@ def virer_inutile(filepath):
 def gradient_descent(board):
     '''trouve le meilleur arrangement des cartes régions et place les bons sanctuaires
     Nécessite un board'''
-    d_score = 0
-    swap_1 = randint(0,8)
-    swap_2 = randint(0,8)
-
     o_score = board.evaluate()
+    d_score = 1
+    nb_iter = 1000
+    for i in range(nb_iter):
+        d_score, swap_1, swap_2 = swap_random(board, o_score)
+        print(f"swapped cards nb {swap_1} and {swap_2} and improved of {d_score}")
+        if d_score < 0:
+            swap(board, swap_2, swap_1)
+            print("reversed")
+        else:
+            o_score = o_score + d_score
+            print(o_score)
+
+
+def swap_random(board, o_score):
+    '''swap 2 cartes au hasard et renvoie le taux d'amélioration'''
+    d_score = 0
+    swap_1 = randint(0,7)
+    swap_2 = randint(0,7)
 
     while swap_1 == swap_2:
-        swap_2 = randint(0,8)
+        swap_2 = randint(0,7)
+
+    swap(board, swap_1, swap_2)
+
+    d_score = board.evaluate() - o_score
+
+    return d_score, swap_1, swap_2
+
+def swap(board, swap_1, swap_2):
+    '''swap 2 cartes'''
+    current_relevant_nb_sanc = 0
+    new_relevant_nb_sanc = 0
+    if swap_1 > 0 and board.cards[swap_1-1].value < board.cards[swap_1].value:
+        current_relevant_nb_sanc += 1
+    if swap_2 > 0 and board.cards[swap_2-1].value < board.cards[swap_2].value:
+        current_relevant_nb_sanc += 1
 
     tmp = board.cards[swap_1].copy()
     board.cards[swap_1] = board.cards[swap_2]
     board.cards[swap_2] = tmp
 
-    if board.evaluate() > o_score:
-        print(f"swapped cards nb {swap_1} and {swap_2}")
+    if swap_1 > 0 and board.cards[swap_1-1].value < board.cards[swap_1].value:
+        new_relevant_nb_sanc += 1
+    if swap_2 > 0 and board.cards[swap_2-1].value < board.cards[swap_2].value:
+        new_relevant_nb_sanc += 1
+
+    return new_relevant_nb_sanc - current_relevant_nb_sanc

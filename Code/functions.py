@@ -120,7 +120,7 @@ def get_4_par_chimere(board):
 
 def get_1_par_chardon(board):
     '''1 point par chardon'''
-    return board.merveille["cha"]
+    return board.merveilles["cha"]
 
 def get_2_par_chardon(board):
     '''2 points par chardon'''
