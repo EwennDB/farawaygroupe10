@@ -83,6 +83,10 @@ def virer_inutile(filepath):
         print(i.value)
     return regions
 
+def gradient_descent(filepath):
+    '''teste une insstance au pif puis essaie de l'améliorer'''
+    
+
 # virer_inutile("../Sujet/Instances_hors_compétition/test.txt")
 brute_force("../Sujet/Instances_hors_compétition/8_7_a.txt")
 

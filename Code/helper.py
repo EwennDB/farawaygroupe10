@@ -1,6 +1,7 @@
 import copy
 import json
 from Card import Card
+from random import randint
 from functions import functions
 from conditions import conditions
 import itertools
@@ -88,6 +89,10 @@ def add_with_order(lst : list, val : int):
 def combinations(nb_cards, n):
     lst = [i for i in range(nb_cards)]
     return list(itertools.combinations(lst, n))
+
+def get_random_inst(lst_cards : list, lst_sanc : list):
+    for i in range(8):
+        n = randint(len(lst_cards))
 
 def nnnnnnnnn():
     pass
