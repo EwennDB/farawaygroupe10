@@ -13,30 +13,21 @@ if __name__ == '__main__':
     lst = [i for i in range(1, 69)]
 
     cards = make_regions(lst)
-
-    test = Board(lst_sanctuaries)
-
-    for i in range(1, len(cards)+1):
-        test.place_card(cards[-i])
-
-    print(test)
-
-    while(test.pos != -1):
-        test.reveal_card()
     
-    print(test.merveilles, test.score)
-
     test = Board(make_sanctuaries(lst_sanctuaries))
     cards = make_regions(lst_regions)
     for i in range(8):
         nb = randint(0, len(cards) - 1)
         test.place_card(cards.pop(nb))
 
+    for i in range(test.nb_sanc):
+        test.add_sanctuary(test.sanctuaire_dispo[0])
+
     print(test)
 
     while(test.pos != -1):
         test.reveal_card()
-        print(test.score)
+
     test.calc_sanctuary_score()
     
-    print(test.merveilles, test.score)
+    print(test)
