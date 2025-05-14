@@ -11,8 +11,8 @@ if __name__ == '__main__':
     
     # lst_regions, lst_sanctuaries = make_value_lists("../Sujet/Instances_hors_compétition/8_7_a.txt")
 
-    lst_regions = [59,68,14,17,23,25,28,8]
-    lst_sanctuaries = [108,116,123,130,131]
+    lst_regions = [19,66,68,39,51,16,32,38]
+    lst_sanctuaries = [102,104,107,117,121]
     
     test = Board(make_sanctuaries(lst_sanctuaries))
     cards = make_regions(lst_regions)
