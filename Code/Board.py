@@ -1,11 +1,7 @@
 from Card import Card
 from helper import add_dict, make_regions
 from random import randint
-<<<<<<< HEAD
 from copy import deepcopy
-=======
-import copy
->>>>>>> c29631eba74d281da59e95f610303232ff4ae5a1
 
 class Board:
     def __init__(self, sanctuaire_dispo):

@@ -6,7 +6,7 @@ def brute_force(path_instance) :
     '''brute_force toutes les possibilités d'une instance,
     ça marche pas, à cause de l'ordre des sanctuaires'''
     max = 0
-    lst_regions, lst_sanctuaries = make_value_lists("../Sujet/Instances_hors_compétition/8_7_a.txt")
+    lst_regions, lst_sanctuaries = make_value_lists(path_instance)
 
     regions = make_regions(lst_regions)
     regions2 = copy.deepcopy(regions)
@@ -88,4 +88,5 @@ def virer_inutile(filepath):
     return regions
 
 # virer_inutile("../Sujet/Instances_hors_compétition/test.txt")
-brute_force("../Sujet/Instances_hors_compétition/test.txt")
+brute_force("../Sujet/Instances_hors_compétition/8_7_c.txt")
+
