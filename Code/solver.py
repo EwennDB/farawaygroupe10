@@ -5,8 +5,7 @@ import copy
 def brute_force(path_instance) :
     '''brute_force toutes les possibilités d'une instance,
     ça marche pas, à cause de l'ordre des sanctuaires'''
-    max = 0
-    lst_regions, lst_sanctuaries = make_value_lists("../Sujet/Instances_hors_compétition/8_7_a.txt")
+    lst_regions, lst_sanctuaries = make_value_lists(path_instance)
 
     regions = make_regions(lst_regions)
     regions2 = copy.deepcopy(regions)
@@ -14,7 +13,6 @@ def brute_force(path_instance) :
 
     lst = []
     best = Board(sanctuaries)
-    a = 0
 
     cmb_lst = []
 
@@ -37,7 +35,6 @@ def brute_force(path_instance) :
                             for o in range(len(regions)-6):
                                 lst[i][j][k][l][m][n].append([])
                                 for p in range(len(regions)-7):
-                                    a += 1
                                     current_plc = lst[i][j][k][l][m][n][o]
                                     current_plc = [Board(copy.deepcopy(sanctuaries))]
                                     current_plc[0].place_card(regions2.pop(i))
@@ -64,8 +61,7 @@ def brute_force(path_instance) :
                                             print(best)
 
                                         current_plc[0] = current_plc[1].copy()
-                            # exit()
-                                        
+
     print(best)
 
 def virer_inutile(filepath):
@@ -87,5 +83,9 @@ def virer_inutile(filepath):
         print(i.value)
     return regions
 
+def gradient_escent(filepath):
+    '''choisis une instance au pif puis tentes de l'améliorer'''
+    pass
+
 # virer_inutile("../Sujet/Instances_hors_compétition/test.txt")
-brute_force("../Sujet/Instances_hors_compétition/test.txt")
+brute_force("../Sujet/Instances_hors_compétition/8_10.txt")
