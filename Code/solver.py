@@ -87,6 +87,55 @@ def virer_inutile(filepath):
         print(i.value)
     return regions
 
+
+
+from Board import Board
+from helper import make_regions, make_sanctuaries
+from itertools import permutations, combinations
+import copy
+
+def brute_force_gpt(path_instance):
+    """
+    Bruteforce complet des placements possibles :
+    - Toutes les permutations des cartes Région (ordre important)
+    - Toutes les combinaisons de Sanctuaires (ordre non important, max 7)
+    - place_card() + reveal() à chaque étape
+    - Score total mesuré
+    """
+    regions = make_regions(path_instance)
+    sanctuaries = make_sanctuaries(path_instance)
+
+    best_score = float('-inf')
+    best_board = None
+
+    # Génère toutes les combinaisons possibles de sanctuaires (0 à 7 max)
+    for nb_sanctuaires in range(min(7, len(sanctuaries)) + 1):
+        for selected_sanctuaries in combinations(sanctuaries, nb_sanctuaires):
+
+            # Pour chaque permutation des régions
+            for perm in permutations(regions):
+
+                # Créer un nouveau plateau avec les sanctuaires sélectionnés
+                board = Board(copy.deepcopy(selected_sanctuaries))
+
+                # Placer chaque carte Région dans l'ordre, avec reveal
+                for region in perm:
+                    board.place_card(region)
+                    board.reveal(region)  # Si reveal() prend une carte. Sinon, adapte à board.reveal()
+
+                score = board.score()
+
+                if score > best_score:
+                    best_score = score
+                    best_board = board
+
+    print(f"[Brute Force] Meilleur score trouvé : {best_score}")
+    return best_board
+
+
+
+
+
 # virer_inutile("../Sujet/Instances_hors_compétition/test.txt")
-brute_force("../Sujet/Instances_hors_compétition/8_7_c.txt")
+brute_force_gpt("../Sujet/Instances_hors_compétition/8_7_a.txt")
 

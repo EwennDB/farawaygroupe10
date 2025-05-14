@@ -19,7 +19,7 @@ class Board:
 
     def copy(self) -> object:
         '''renvoie une copie de ce plateau'''
-        return copy.deepcopy(self)
+        return deepcopy(self)
     
     def place_card(self, card, sanc = None):
         '''place une carte sur le plateau et vérifie si l'on peut prendre un sanctuaire'''
