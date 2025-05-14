@@ -23,8 +23,8 @@ if __name__ == '__main__':
     for i in range(test.nb_sanc):
         test.add_sanctuary(test.sanctuaire_dispo[0])
 
-    # print(test)
-
+    print(test)
+    print(test.evaluate_board())
     while(test.pos != -1):
         test.reveal_card()
         print(test)
