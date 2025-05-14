@@ -90,4 +90,22 @@ def brute_force(path_instance) :
                                         
     print(best)
 
-brute_force("../Sujet/Instances_hors_compétition/8_7_a.txt")
+def virer_inutile(filepath):
+    lst_regions, lst_sanctuaries = make_value_lists(filepath)
+    print(lst_regions)
+    regions = make_regions(lst_regions)
+    sanctuaries = make_sanctuaries(lst_sanctuaries)
+    b = Board(sanctuaries)
+    b.place_all(lst_regions)
+    for i in range(len(b.sanctuaire_dispo)):
+        b.add_sanctuary(b.sanctuaire_dispo[0])
+    b.reveal_all()
+    for i in regions:
+        if i.condition is not None:
+            if not i.condition(b) and len(regions) > 8:
+                regions.remove(i)
+    for i in regions:
+        print(i.value)
+    return regions
+
+virer_inutile("../Sujet/Instances_hors_compétition/test.txt")
