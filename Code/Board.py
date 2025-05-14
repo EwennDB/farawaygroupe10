@@ -111,17 +111,14 @@ class Board:
     def copy(self):
         return deepcopy(self)
 
-    def evaluate(self):
-        '''évalue le score SANS RÉVÉLER les cartes'''
+    def evaluate_board(self):
+        '''évalue le score SANS RÉVÉLER les cartes
+        nécessite que les sanctuaires et régions soient placés
+        '''
         b = self.copy()
 
-        for sanc in b.sanctuaries:
-            b.add_card_args(sanc)
+        b.reveal_all()
 
-        for card in b.cards:
-            b.reveal_card()
-
-        for sanc in b.sanctuaries:
-            b.score += sanc.calc_score(b)
+        b.calc_sanctuary_score()
 
         return b.score
