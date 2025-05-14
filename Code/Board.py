@@ -82,7 +82,7 @@ class Board:
         for _ in self.cards:
             self.reveal_card()
 
-    def calc_sanctuary_score(self):
+    def calc_all_sanctuary_score(self):
         '''calcule le score des sanctuaires'''
         for sanc in self.sanctuaries:
             self.score += sanc.calc_score(self)
@@ -119,6 +119,6 @@ class Board:
 
         b.reveal_all()
 
-        b.calc_sanctuary_score()
+        b.calc_all_sanctuary_score()
 
         return b.score
