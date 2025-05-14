@@ -1,6 +1,7 @@
 from Board import Board
 from helper import make_regions, make_sanctuaries, make_value_lists, combinations
 import copy
+from random import randint
 
 def brute_force(path_instance) :
     '''brute_force toutes les possibilités d'une instance,
@@ -87,7 +88,20 @@ def gradient_descent(board):
     '''trouve le meilleur arrangement des cartes régions et place les bons sanctuaires
     Nécessite un board'''
     d_score = 0
-    board.evalute()
+    swap_1 = randint(8)
+    swap_2 = randint(8)
+
+    o_score = board.evaluate()
+
+    while swap_1 == swap_2:
+        swap_2 = randint(8)
+
+    tmp = board.cards[swap_1].copy()
+    board.cards[swap_1] = board.cards[swap_2]
+    board.cards[swap_2] = tmp
+
+    if board.evaluate() > o_score:
+        print(f"swapped cards nb {swap_1} and {swap_2}")
 
 
 # virer_inutile("../Sujet/Instances_hors_compétition/test.txt")

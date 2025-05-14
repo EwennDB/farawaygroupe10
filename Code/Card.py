@@ -1,3 +1,5 @@
+import copy
+
 class Card:
     def __init__(self, value, couleur, nuit, indice, merveilles, func=None, condition=None):
         self.value = value
@@ -24,6 +26,9 @@ class Card:
                 return self.func(board)
 
         return 0
+    
+    def copy(self):
+        return copy.deepcopy(self)
     
     def __repr__(self):
         return f'value : {self.value} couleur : {self.couleur} nuit : {self.nuit} indice : {self.indice} merveilles : {self.merveilles}'
