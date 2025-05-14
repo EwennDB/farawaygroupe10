@@ -16,6 +16,11 @@ def brute_force(path_instance) :
     best = Board(sanctuaries)
     a = 0
 
+    cmb_lst = []
+
+    for i in range(len(sanctuaries)+1):
+        cmb_lst.append(combinations(len(sanctuaries), i))
+
     #create a board list
     for i in range(len(regions)):
         lst.append([])
@@ -33,39 +38,38 @@ def brute_force(path_instance) :
                                 lst[i][j][k][l][m][n].append([])
                                 for p in range(len(regions)-7):
                                     a += 1
-                                    lst[i][j][k][l][m][n][o] = [Board(copy.deepcopy(sanctuaries))]
-                                    lst[i][j][k][l][m][n][o][0].place_card(regions2.pop(i))
-                                    lst[i][j][k][l][m][n][o][0].place_card(regions2.pop(j))
-                                    lst[i][j][k][l][m][n][o][0].place_card(regions2.pop(k))
-                                    lst[i][j][k][l][m][n][o][0].place_card(regions2.pop(l))
-                                    lst[i][j][k][l][m][n][o][0].place_card(regions2.pop(m))
-                                    lst[i][j][k][l][m][n][o][0].place_card(regions2.pop(n))
-                                    lst[i][j][k][l][m][n][o][0].place_card(regions2.pop(o))
-                                    lst[i][j][k][l][m][n][o][0].place_card(regions2.pop(p))
-                                    lst[i][j][k][l][m][n][o].append(lst[i][j][k][l][m][n][o][0].copy())
+                                    current_plc = lst[i][j][k][l][m][n][o]
+                                    current_plc = [Board(copy.deepcopy(sanctuaries))]
+                                    current_plc[0].place_card(regions2.pop(i))
+                                    current_plc[0].place_card(regions2.pop(j))
+                                    current_plc[0].place_card(regions2.pop(k))
+                                    current_plc[0].place_card(regions2.pop(l))
+                                    current_plc[0].place_card(regions2.pop(m))
+                                    current_plc[0].place_card(regions2.pop(n))
+                                    current_plc[0].place_card(regions2.pop(o))
+                                    current_plc[0].place_card(regions2.pop(p))
+                                    current_plc.append(current_plc[0].copy())
                                     regions2 = copy.deepcopy(regions)
-                                    cmb = combinations(len(sanctuaries), lst[i][j][k][l][m][n][o][0].nb_sanc)
-                                    print(a/40320)
 
-                                    for current_cmb in cmb:
+                                    for current_cmb in cmb_lst[current_plc[0].nb_sanc]:
                                         for q in range(len(current_cmb)):
-                                            lst[i][j][k][l][m][n][o][0].add_sanctuary(lst[i][j][k][l][m][n][o][0].sanctuaire_dispo[current_cmb[q]-q])
+                                            current_plc[0].add_sanctuary(current_plc[0].sanctuaire_dispo[current_cmb[q]-q])
 
-                                        lst[i][j][k][l][m][n][o][0].reveal_all()
+                                        current_plc[0].reveal_all()
 
-                                        lst[i][j][k][l][m][n][o][0].calc_sanctuary_score()
+                                        current_plc[0].calc_sanctuary_score()
 
-                                        print(lst[i][j][k][l][m][n][o][0].score)
-                                        if lst[i][j][k][l][m][n][o][0].score > best.score:
-                                            best = lst[i][j][k][l][m][n][o][0]
+                                        if current_plc[0].score > best.score:
+                                            best = current_plc[0]
                                             print(best)
 
-                                        lst[i][j][k][l][m][n][o][0] = lst[i][j][k][l][m][n][o][1].copy()
-                            exit()
+                                        current_plc[0] = current_plc[1].copy()
+                            # exit()
                                         
     print(best)
 
 def virer_inutile(filepath):
+    '''vire les cartes inutiles (condition inatteignable)'''
     lst_regions, lst_sanctuaries = make_value_lists(filepath)
     print(lst_regions)
     regions = make_regions(lst_regions)
@@ -83,4 +87,5 @@ def virer_inutile(filepath):
         print(i.value)
     return regions
 
-virer_inutile("../Sujet/Instances_hors_compétition/test.txt")
+# virer_inutile("../Sujet/Instances_hors_compétition/test.txt")
+brute_force("../Sujet/Instances_hors_compétition/test.txt")
