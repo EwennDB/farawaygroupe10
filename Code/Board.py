@@ -72,12 +72,13 @@ class Board:
 
     ##Révèle/Compte
     def reveal_card(self):
-        '''revele les cartes et compte leurs scores'''
+        '''revele une carte région et fait les changements nécessaires'''
         self.add_card_args(self.cards[self.pos])
         self.score += self.cards[self.pos].calc_score(self)
         self.pos -= 1
 
     def reveal_all(self):
+        '''révèle toutes les cartes régions'''
         for _ in self.cards:
             self.reveal_card()
 

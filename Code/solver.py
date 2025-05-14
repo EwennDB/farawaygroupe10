@@ -84,9 +84,10 @@ def virer_inutile(filepath):
     return regions
 
 def gradient_descent(board):
-    '''trouve le meilleur arrangement des cartes régions et place les bons sanctuaires'''
+    '''trouve le meilleur arrangement des cartes régions et place les bons sanctuaires
+    Nécessite un board'''
     d_score = 0
-    board.evalute
+    board.evalute()
 
 
 # virer_inutile("../Sujet/Instances_hors_compétition/test.txt")
