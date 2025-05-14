@@ -111,7 +111,7 @@ class Board:
     def copy(self):
         return deepcopy(self)
 
-    def evaluate_board(self):
+    def evaluate(self):
         '''évalue le score SANS RÉVÉLER les cartes
         nécessite que les sanctuaires et régions soient placés
         '''
