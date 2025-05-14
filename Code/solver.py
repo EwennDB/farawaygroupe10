@@ -4,7 +4,7 @@ import copy
 
 def brute_force(path_instance) :
     '''brute_force toutes les possibilités d'une instance,
-    ça marche pas, à cause de l'ordre des sanctuaires'''
+    pas opti'''
     lst_regions, lst_sanctuaries = make_value_lists(path_instance)
 
     regions = make_regions(lst_regions)
