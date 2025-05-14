@@ -34,7 +34,7 @@ def make_card(nb):
         data = json.load(file)
         args = data[nb]
 
-        return Card(args[0], args[1], args[2], args[3], args[4], functions[args[5]], conditions[args[6]]))
+    return Card(args[0], args[1], args[2], args[3], args[4], functions[args[5]], conditions[args[6]])
 
 def make_sanctuaries(lst) -> list:
     '''créé une liste d'object Carte sanctuaires avec les valeurs données dans la liste'''
