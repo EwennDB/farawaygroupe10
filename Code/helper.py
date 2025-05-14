@@ -3,6 +3,7 @@ import json
 from Card import Card
 from functions import functions
 from conditions import conditions
+import itertools
 
 def add_dict(dict1, dict2):
     dict3 = copy.deepcopy(dict2)
@@ -76,6 +77,9 @@ def add_with_order(lst : list, val : int):
             return add_with_order(lst[:ind], val)+lst[ind:]
     return lst
 
+def combinations(nb_cards, n):
+    lst = [i for i in range(nb_cards)]
+    return list(itertools.combinations(lst, n))
 
 def nnnnnnnnn():
     pass

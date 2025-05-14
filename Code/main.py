@@ -8,25 +8,25 @@ import copy
 
 if __name__ == '__main__':
 
+    
     lst_regions, lst_sanctuaries = make_value_lists("../Sujet/Instances_hors_compétition/8_7_a.txt")
 
-    lst = [i for i in range(1, 69)]
-
-    cards = make_regions(lst)
+    lst_regions = [59,68,14,17,23,25,28,8]
+    lst_sanctuaries = [108,116,123,130,131]
     
     test = Board(make_sanctuaries(lst_sanctuaries))
     cards = make_regions(lst_regions)
     for i in range(8):
-        nb = randint(0, len(cards) - 1)
-        test.place_card(cards.pop(nb))
+        test.place_card(cards.pop(0))
 
     for i in range(test.nb_sanc):
         test.add_sanctuary(test.sanctuaire_dispo[0])
 
-    print(test)
+    # print(test)
 
     while(test.pos != -1):
         test.reveal_card()
+        print(test)
 
     test.calc_sanctuary_score()
     
