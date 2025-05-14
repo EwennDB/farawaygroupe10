@@ -1,5 +1,5 @@
 from Board import Board
-from helper import make_regions, make_sanctuaries, make_value_lists, add_with_order
+from helper import make_regions, make_sanctuaries, make_value_lists, combinations
 import copy
 
 def brute_force(path_instance) :
@@ -11,11 +11,10 @@ def brute_force(path_instance) :
     regions = make_regions(lst_regions)
     regions2 = copy.deepcopy(regions)
     sanctuaries = make_sanctuaries(lst_sanctuaries)
-    sanctuaries2 = copy.deepcopy(sanctuaries)
 
     lst = []
-    sanc_scores = []
     best = Board(sanctuaries)
+    a = 0
 
     #create a board list
     for i in range(len(regions)):
@@ -33,84 +32,36 @@ def brute_force(path_instance) :
                             for o in range(len(regions)-6):
                                 lst[i][j][k][l][m][n].append([])
                                 for p in range(len(regions)-7):
-                                    lst[i][j][k][l][m][n][o] = Board(sanctuaries)
-                                    lst[i][j][k][l][m][n][o].place_card(regions2.pop(i))
-                                    lst[i][j][k][l][m][n][o].place_card(regions2.pop(j))
-                                    lst[i][j][k][l][m][n][o].place_card(regions2.pop(k))
-                                    lst[i][j][k][l][m][n][o].place_card(regions2.pop(l))
-                                    lst[i][j][k][l][m][n][o].place_card(regions2.pop(m))
-                                    lst[i][j][k][l][m][n][o].place_card(regions2.pop(n))
-                                    lst[i][j][k][l][m][n][o].place_card(regions2.pop(o))
-                                    lst[i][j][k][l][m][n][o].place_card(regions2.pop(p))
+                                    a += 1
+                                    lst[i][j][k][l][m][n][o] = [Board(copy.deepcopy(sanctuaries))]
+                                    lst[i][j][k][l][m][n][o][0].place_card(regions2.pop(i))
+                                    lst[i][j][k][l][m][n][o][0].place_card(regions2.pop(j))
+                                    lst[i][j][k][l][m][n][o][0].place_card(regions2.pop(k))
+                                    lst[i][j][k][l][m][n][o][0].place_card(regions2.pop(l))
+                                    lst[i][j][k][l][m][n][o][0].place_card(regions2.pop(m))
+                                    lst[i][j][k][l][m][n][o][0].place_card(regions2.pop(n))
+                                    lst[i][j][k][l][m][n][o][0].place_card(regions2.pop(o))
+                                    lst[i][j][k][l][m][n][o][0].place_card(regions2.pop(p))
+                                    lst[i][j][k][l][m][n][o].append(lst[i][j][k][l][m][n][o][0].copy())
                                     regions2 = copy.deepcopy(regions)
+                                    cmb = combinations(len(sanctuaries), lst[i][j][k][l][m][n][o][0].nb_sanc)
+                                    print(a/40320)
 
-                                    for q in range(len(sanctuaries)):
-                                        if lst[i][j][k][l][m][n][o].nb_sanc > 0:
-                                            lst[i][j][k][l][m][n][o].add_sanctuary(lst[i][j][k][l][m][n][o].sanctuaire_dispo[q])
-                                        
-                                        for r in range(len(sanctuaries)-1):
-                                            if lst[i][j][k][l][m][n][o].nb_sanc > 1:
-                                                lst[i][j][k][l][m][n][o].add_sanctuary(lst[i][j][k][l][m][n][o].sanctuaire_dispo[r])
-                                            
-                                            for s in range(len(sanctuaries)-2):
-                                                if lst[i][j][k][l][m][n][o].nb_sanc > 2:
-                                                    lst[i][j][k][l][m][n][o].add_sanctuary(lst[i][j][k][l][m][n][o].sanctuaire_dispo[s])
-                                                
-                                                for t in range(len(sanctuaries)-3):
-                                                    if lst[i][j][k][l][m][n][o].nb_sanc > 3:
-                                                        lst[i][j][k][l][m][n][o].add_sanctuary(lst[i][j][k][l][m][n][o].sanctuaire_dispo[t])
-                                                    
-                                                    for u in range(len(sanctuaries)-4):
-                                                        if lst[i][j][k][l][m][n][o].nb_sanc > 4:
-                                                            lst[i][j][k][l][m][n][o].add_sanctuary(lst[i][j][k][l][m][n][o].sanctuaire_dispo[u])
-                                                        
-                                                        for v in range(len(sanctuaries)-5):
-                                                            if lst[i][j][k][l][m][n][o].nb_sanc > 5:
-                                                                lst[i][j][k][l][m][n][o].add_sanctuary(lst[i][j][k][l][m][n][o].sanctuaire_dispo[v])
-                                                            
-                                                            for w in range(len(sanctuaries)-6):
-                                                                if lst[i][j][k][l][m][n][o].nb_sanc > 6:
-                                                                    lst[i][j][k][l][m][n][o].add_sanctuary(lst[i][j][k][l][m][n][o].sanctuaire_dispo[w])
+                                    for current_cmb in cmb:
+                                        for q in range(len(current_cmb)):
+                                            lst[i][j][k][l][m][n][o][0].add_sanctuary(lst[i][j][k][l][m][n][o][0].sanctuaire_dispo[current_cmb[q]-q])
 
-                                                                print
-                                                                lst[i][j][k][l][m][n][o].reveal_all()
+                                        lst[i][j][k][l][m][n][o][0].reveal_all()
 
-                                                                for _ in range(lst[i][j][k][l][m][n][o].nb_sanc):
-                                                                    lst[i][j][k][l][m][n][o].calc_sanctuary_score()
+                                        lst[i][j][k][l][m][n][o][0].calc_sanctuary_score()
 
-                                                                if lst[i][j][k][l][m][n][o].score > best.score:
-                                                                    best = lst[i][j][k][l][m][n][o]
-                                                                    print(best)
-                                                                
-                                                                lst[i][j][k][l][m][n][o].couleurs = {"r" : 0, "b" : 0, "v" : 0, "j" : 0}
-                                                                lst[i][j][k][l][m][n][o].nuits = 0
-                                                                lst[i][j][k][l][m][n][o].indices = 0
-                                                                lst[i][j][k][l][m][n][o].merveilles = {"p" : 0, "cha" : 0, "chi" : 0}
-                                                                lst[i][j][k][l][m][n][o].score = 0
-                                                                lst[i][j][k][l][m][n][o].pos = 7
+                                        print(lst[i][j][k][l][m][n][o][0].score)
+                                        if lst[i][j][k][l][m][n][o][0].score > best.score:
+                                            best = lst[i][j][k][l][m][n][o][0]
+                                            print(best)
 
-                                                                val = lst[i][j][k][l][m][n][o].clear_last_sanctuary()
-                                                                if not val is None:
-                                                                    sanctuaries2.append(val)
-                                                            val = lst[i][j][k][l][m][n][o].clear_last_sanctuary()
-                                                            if not val is None:
-                                                                sanctuaries2.append(val)
-                                                        val = lst[i][j][k][l][m][n][o].clear_last_sanctuary()
-                                                        if not val is None:
-                                                            sanctuaries2.append(val)
-                                                    val = lst[i][j][k][l][m][n][o].clear_last_sanctuary()
-                                                    if not val is None:
-                                                        sanctuaries2.append(val)
-                                                val = lst[i][j][k][l][m][n][o].clear_last_sanctuary()
-                                                if not val is None:
-                                                    sanctuaries2.append(val)
-                                            val = lst[i][j][k][l][m][n][o].clear_last_sanctuary()
-                                            if not val is None:
-                                                sanctuaries2.append(val)
-                                        val = lst[i][j][k][l][m][n][o].clear_last_sanctuary()
-                                        if not val is None:
-                                            sanctuaries2.append(val)
- 
+                                        lst[i][j][k][l][m][n][o][0] = lst[i][j][k][l][m][n][o][1].copy()
+                            exit()
                                         
     print(best)
 
