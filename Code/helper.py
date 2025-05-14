@@ -29,7 +29,7 @@ def make_regions(lst) -> list:
 
     return lst_cards
 
-def make_reigion_card(nb):
+def make_reigon_card(nb):
     '''créé une Carte régions avec la valeur donnée'''
     with open("Data/cards.json", "r") as file:
         data = json.load(file)
