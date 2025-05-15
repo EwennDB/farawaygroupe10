@@ -87,7 +87,7 @@ def virer_inutile(filepath):
 def gradient_descent(board):
     '''trouve le meilleur arrangement des cartes régions et place les bons sanctuaires
     Nécessite un board'''
-    nb_iter = 10
+    nb_iter = 100
     #stocke le meilleur board pour pouvoir revenir en arrière
     best = board.copy()
     current_score = board.evaluate()
@@ -95,6 +95,7 @@ def gradient_descent(board):
 
     for i in range(nb_iter):
         print(board)
+        board.repr_ressources()
         # fait un swap random nb_iter fois
         d_score, swap_1, swap_2 = swap_random(board)
         print(f"swapped cards nb {swap_1} and {swap_2} and improved of {d_score}")
@@ -150,8 +151,8 @@ def adjust_nb_sanc(board, d_nb_sanc):
     '''ajoute nb_sanc au board'''
     if d_nb_sanc > 0:
         for _ in range(d_nb_sanc):
-            board.add_sanctuary(board.sanctuaire_dispo[0])
+            board.sanctuaries.append(board.sanctuaire_dispo.pop(0))
 
     elif d_nb_sanc < 0:
         for _ in range(-d_nb_sanc):
-            board.clear_last_sanctuary()
+            board.sanctuaire_dispo.append(board.sanctuaries.pop(0))

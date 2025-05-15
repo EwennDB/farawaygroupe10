@@ -69,7 +69,9 @@ class Board:
             self.couleurs[card.couleur] += 1
 
     def add_sanctuary(self, sanctuary):
-        '''ajoute un sanctuaire au plateau'''
+        '''ajoute un sanctuaire au plateau
+        ajoute ses ressources
+        et l'enlève des sanctuaires dispo'''
         self.sanctuaries.append(sanctuary)
         self.add_card_args(sanctuary)
         self.sanctuaire_dispo.remove(sanctuary)
@@ -125,6 +127,9 @@ class Board:
         nécessite que les sanctuaires et régions soient placés
         '''
         b = self.copy()
+
+        for i in range(self.nb_sanc):
+            b.add_card_args(self.sanctuaries[i])
 
         b.reveal_all_regions()
 

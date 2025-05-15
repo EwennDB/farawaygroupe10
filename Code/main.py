@@ -10,8 +10,8 @@ import copy
 if __name__ == '__main__':
 
 
-    lst_regions = [68,17,59,28,14,23,8,25]
-    lst_sanctuaries = [108, 116, 121]
+    lst_regions = [8,25,59,68,14,17,23,28]
+    lst_sanctuaries = [108, 116, 121, 123, 125, 130]
 
     #créé les cartes régions et sanctuaires
     test = Board(make_sanctuaries(lst_sanctuaries))
@@ -28,7 +28,7 @@ if __name__ == '__main__':
     test.count_all()
     print(test.score)
 
-    lst_regions = [68,17,59,28,14,23,8,25]
+    lst_regions = [8,14,17,23,25,28,59,68]
     lst_sanctuaries = [108, 116, 121, 123, 125, 130, 131]
 
     #créé les cartes régions et sanctuaires
@@ -38,6 +38,9 @@ if __name__ == '__main__':
     #révèle les régions
     for i in range(8):
         test.place_card(cards.pop(0))
+
+    for i in range(test.nb_sanc):
+        test.sanctuaries.append(test.sanctuaire_dispo.pop(0))
 
     # print(test)
 
