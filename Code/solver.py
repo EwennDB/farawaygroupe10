@@ -87,51 +87,71 @@ def virer_inutile(filepath):
 def gradient_descent(board):
     '''trouve le meilleur arrangement des cartes régions et place les bons sanctuaires
     Nécessite un board'''
-    o_score = board.evaluate()
-    d_score = 1
-    nb_iter = 1000
+    nb_iter = 10
+    #stocke le meilleur board pour pouvoir revenir en arrière
+    best = board.copy()
+    current_score = board.evaluate()
+    print(f"base score is : {current_score}")
+
     for i in range(nb_iter):
-        d_score, swap_1, swap_2 = swap_random(board, o_score)
+        print(board)
+        # fait un swap random nb_iter fois
+        d_score, swap_1, swap_2 = swap_random(board)
         print(f"swapped cards nb {swap_1} and {swap_2} and improved of {d_score}")
-        if d_score < 0:
-            swap(board, swap_2, swap_1)
+
+        # si le swap s'avère défavorable, on repart en arrière
+        if d_score <= 0:
+            board = best.copy()
             print("reversed")
+
+        # si il s'avère bénéfique, on le garde
         else:
-            o_score = o_score + d_score
-            print(o_score)
+            best = board.copy()
+            print(board)
+            current_score += d_score
+
+        print(f"new score : {current_score}")
+    print(f"score : {board.evaluate()}")
 
 
-def swap_random(board, o_score):
-    '''swap 2 cartes au hasard et renvoie le taux d'amélioration'''
-    d_score = 0
+def swap_random(board):
+    '''swap 2 cartes au hasard
+    renvoie le taux d'amélioration et les indices des deux cartes échangées'''
+    o_score = board.evaluate()
+
     swap_1 = randint(0,7)
     swap_2 = randint(0,7)
 
     while swap_1 == swap_2:
         swap_2 = randint(0,7)
 
-    swap(board, swap_1, swap_2)
+    d_nb_sanc = swap(board, swap_1, swap_2)
+    print(f"d_nb_anc : {d_nb_sanc}")
+    adjust_nb_sanc(board, d_nb_sanc)
 
     d_score = board.evaluate() - o_score
 
     return d_score, swap_1, swap_2
 
 def swap(board, swap_1, swap_2):
-    '''swap 2 cartes'''
-    current_relevant_nb_sanc = 0
-    new_relevant_nb_sanc = 0
-    if swap_1 > 0 and board.cards[swap_1-1].value < board.cards[swap_1].value:
-        current_relevant_nb_sanc += 1
-    if swap_2 > 0 and board.cards[swap_2-1].value < board.cards[swap_2].value:
-        current_relevant_nb_sanc += 1
+    '''swap 2 cartes
+    renvoie le nb de sanctuaires perdus/gagnés'''
+    o_nb_sanc = board.nb_sanc
 
     tmp = board.cards[swap_1].copy()
     board.cards[swap_1] = board.cards[swap_2]
     board.cards[swap_2] = tmp
 
-    if swap_1 > 0 and board.cards[swap_1-1].value < board.cards[swap_1].value:
-        new_relevant_nb_sanc += 1
-    if swap_2 > 0 and board.cards[swap_2-1].value < board.cards[swap_2].value:
-        new_relevant_nb_sanc += 1
+    board.count_nb_sanc()
 
-    return new_relevant_nb_sanc - current_relevant_nb_sanc
+    return board.nb_sanc - o_nb_sanc
+
+def adjust_nb_sanc(board, d_nb_sanc):
+    '''ajoute nb_sanc au board'''
+    if d_nb_sanc > 0:
+        for _ in range(d_nb_sanc):
+            board.add_sanctuary(board.sanctuaire_dispo[0])
+
+    elif d_nb_sanc < 0:
+        for _ in range(-d_nb_sanc):
+            board.clear_last_sanctuary()

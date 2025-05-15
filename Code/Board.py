@@ -38,6 +38,11 @@ class Board:
         
         return chaine
 
+    def repr_ressources(self):
+        '''représente les ressources du tableau'''
+        print("nuits : " + str(self.nuits) + " indices : " + str(self.nuits))
+        print("\ncouleurs : "+str(self.couleurs) + " merveilles : "+str(self.merveilles))
+
     def copy(self) -> object:
         '''renvoie une copie de ce plateau'''
         return deepcopy(self)
@@ -77,7 +82,7 @@ class Board:
         self.score += self.cards[self.pos].calc_score(self)
         self.pos -= 1
 
-    def reveal_all(self):
+    def reveal_all_regions(self):
         '''révèle toutes les cartes régions'''
         for _ in self.cards:
             self.reveal_card()
@@ -87,6 +92,10 @@ class Board:
         for sanc in self.sanctuaries:
             self.score += sanc.calc_score(self)
 
+    def count_all(self):
+        '''compte tt (régions + sanctuaires)'''
+        self.reveal_all_regions()
+        self.calc_all_sanctuary_score()
 
     ##Vide
     def clear_sanc(self):
@@ -103,7 +112,7 @@ class Board:
             self.score -= sanc.calc_score(self)
         self.sanctuaire_dispo = [(self.sanctuaries.pop(len(self.sanctuaries) - 1))] + self.sanctuaire_dispo
         o = self.sanctuaire_dispo[-1]
-        self.calc_sanctuary_score()
+        self.calc_all_sanctuary_score()
         return o
 
 
@@ -117,8 +126,15 @@ class Board:
         '''
         b = self.copy()
 
-        b.reveal_all()
+        b.reveal_all_regions()
 
         b.calc_all_sanctuary_score()
 
         return b.score
+
+    def count_nb_sanc(self):
+        '''actualise le nb de sanctuaire'''
+        self.nb_sanc = 0
+        for i in range(7):
+            if self.cards[i].value < self.cards[i+1].value:
+                self.nb_sanc += 1
