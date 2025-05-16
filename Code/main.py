@@ -29,7 +29,7 @@ if __name__ == '__main__':
     # print(test.score)
 
     lst_regions = [8,14,17,23,25,28,59,68]
-    lst_sanctuaries = [108, 116, 121, 123, 125, 130, 131, 104]
+    lst_sanctuaries = [108, 116, 121, 123, 125, 130, 131]
 
     #créé les cartes régions et sanctuaires
     test = Board(make_sanctuaries(lst_sanctuaries))

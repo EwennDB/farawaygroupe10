@@ -2,6 +2,7 @@ from Board import Board
 from helper import make_regions, make_sanctuaries, make_value_lists, combinations
 import copy
 from random import randint
+from time import sleep
 
 def brute_force(path_instance) :
     '''brute_force toutes les possibilités d'une instance,
@@ -92,29 +93,41 @@ def gradient_descent(board):
     best = board.copy()
     current_score = board.evaluate()
     print(f"base score is : {current_score}")
+    for j in range(nb_iter):
+        for i in range(nb_iter):
+            # print(board)
+            # fait un swap random nb_iter fois
+            d_score, swap_1, swap_2 = swap_random(board)
+            # print(f"swapped cards nb {swap_1} and {swap_2} and improved of {d_score}")
 
-    for i in range(nb_iter):
-        print(board)
-        board.repr_ressources()
-        # fait un swap random nb_iter fois
-        d_score, swap_1, swap_2 = swap_random(board)
-        print(f"swapped cards nb {swap_1} and {swap_2} and improved of {d_score}")
+            # si le swap s'avère défavorable, on repart en arrière
+            if d_score <= 0:
+                board = best.copy()
+                # print("reversed")
 
-        # si le swap s'avère défavorable, on repart en arrière
-        if d_score <= 0:
-            board = best.copy()
-            print("reversed")
+            # si il s'avère bénéfique, on le garde
+            else:
+                best = board.copy()
+                print(board)
+                current_score += d_score
+                print(f"new score : {current_score}")
 
-        # si il s'avère bénéfique, on le garde
-        else:
-            best = board.copy()
-            print(board)
-            current_score += d_score
+        board = best.copy()
 
-        print(f"new score : {current_score}")
-    print(f"score : {board.evaluate()}")
+        for i in range(nb_iter):
+
+            #change les sanctuaires
+            a = randint(0, len(board.sanctuaries) - 1)
+            b = randint(0, len(board.sanctuaire_dispo) - 1)
+            board.sanctuaries[a], board.sanctuaire_dispo[b] = board.sanctuaire_dispo[b], board.sanctuaries[a]
+            if board.evaluate() > current_score:
+                print(board)
+                print(f"new score : {current_score}")
+                current_score = board.evaluate()
+                best = board.copy()
+
+    print(f"score : {best.evaluate()}")
     print(best)
-
 
 def swap_random(board):
     '''swap 2 cartes au hasard
@@ -128,7 +141,7 @@ def swap_random(board):
         swap_2 = randint(0,7)
 
     d_nb_sanc = swap(board, swap_1, swap_2)
-    print(f"d_nb_anc : {d_nb_sanc}")
+    # print(f"d_nb_anc : {d_nb_sanc}")
     adjust_nb_sanc(board, d_nb_sanc)
 
     d_score = board.evaluate() - o_score
