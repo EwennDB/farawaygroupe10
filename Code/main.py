@@ -3,7 +3,7 @@ from Card import Card
 from helper import make_regions, make_sanctuaries, make_value_lists, add_with_order
 from functions import *
 from random import randint
-from solver import gradient_descent, swap
+from solver import gradient_descent, swap, brute_force
 import copy
 
 
@@ -45,3 +45,5 @@ if __name__ == '__main__':
     # print(test)
 
     gradient_descent(test)
+
+    brute_force("../Sujet/Instances_compétition/competition_01.txt")

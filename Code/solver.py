@@ -53,9 +53,9 @@ def brute_force(path_instance) :
                                         for q in range(len(current_cmb)):
                                             current_plc[0].add_sanctuary(current_plc[0].sanctuaire_dispo[current_cmb[q]-q])
 
-                                        current_plc[0].reveal_all()
+                                        current_plc[0].reveal_all_regions()
 
-                                        current_plc[0].calc_sanctuary_score()
+                                        current_plc[0].calc_all_sanctuary_score()
 
                                         if current_plc[0].score > best.score:
                                             best = current_plc[0]
