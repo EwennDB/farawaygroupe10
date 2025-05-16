@@ -87,7 +87,7 @@ def virer_inutile(filepath):
 def gradient_descent(board):
     '''trouve le meilleur arrangement des cartes régions et place les bons sanctuaires
     Nécessite un board'''
-    nb_iter = 100
+    nb_iter = 10
     #stocke le meilleur board pour pouvoir revenir en arrière
     best = board.copy()
     current_score = board.evaluate()
@@ -113,6 +113,7 @@ def gradient_descent(board):
 
         print(f"new score : {current_score}")
     print(f"score : {board.evaluate()}")
+    print(best)
 
 
 def swap_random(board):

@@ -102,9 +102,8 @@ class Board:
     ##Vide
     def clear_sanc(self):
         for sanc in self.sanctuaries:
-            self.score -= sanc.calc_score(self)
-        for i in range(len(self.sanctuaries)):
-            self.sanctuaire_dispo.append(self.sanctuaries.pop(i))
+            self.sanctuaire_dispo.append(sanc)
+            self.sanctuaries.remove(sanc)
 
     def clear_last_sanctuary(self):
         if self.sanctuaries == []:
