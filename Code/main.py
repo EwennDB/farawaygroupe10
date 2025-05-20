@@ -8,41 +8,40 @@ from time import time
 
 
 if __name__ == '__main__':
+    for i in range(1, 10):
+        filepath = f"../Sujet/Instances_compétition/competition_0{str(i)}.txt"
 
-    filepath = "../Sujet/Instances_compétition/competition_10.txt"
+        lst_regions, lst_sanctuaries = make_value_lists(filepath)
 
-    lst_regions, lst_sanctuaries = make_value_lists(filepath)
-
-    #créé les cartes régions et sanctuaires
-    sanctuaries = make_sanctuaries(lst_sanctuaries)
-    regions = make_regions(lst_regions)
-    regions2 = copy.deepcopy(regions)
-    best = Board(sanctuaries)
-
-    startTime = time()
-    timeToRun = 300
-    endTime = startTime + timeToRun
-
-    lst_boards = []
-    while time() <= endTime:
+        #créé les cartes régions et sanctuaires
+        sanctuaries = make_sanctuaries(lst_sanctuaries)
+        regions = make_regions(lst_regions)
         regions2 = copy.deepcopy(regions)
-        current = Board(copy.deepcopy(sanctuaries))
+        best = Board(sanctuaries)
 
-        for j in range(8):
-            a = randint(0, len(regions2)-1)
-            current.place_card(regions2.pop(a))
+        startTime = time()
+        timeToRun = 60
+        endTime = startTime + timeToRun
 
-        for j in range(current.nb_sanc):
-            current.sanctuaries.append(current.sanctuaire_dispo.pop(0))
+        lst_boards = []
+        while time() <= endTime:
+            regions2 = copy.deepcopy(regions)
+            current = Board(copy.deepcopy(sanctuaries))
 
-        tmp = gradient_descent(current)
-        if best.evaluate() < tmp.evaluate():
-            best = tmp
-            print(f"new best : {best.evaluate()}")
-            gradient_descent_regions(tmp, regions)
+            for j in range(8):
+                a = randint(0, len(regions2)-1)
+                current.place_card(regions2.pop(a))
 
-    add_sol(filepath, best)
+            for j in range(current.nb_sanc):
+                current.sanctuaries.append(current.sanctuaire_dispo.pop(0))
 
-    print(f"best : {best}")
-    print(f"best score : {best.evaluate()}")
+            tmp = gradient_descent(current)
+            if best.evaluate() < tmp.evaluate():
+                best = tmp
+                print(f"new best : {best.evaluate()}")
+                #gradient_descent_regions(tmp, regions)
 
+        add_sol(filepath, best)
+
+        print(f"best : {best}")
+        print(f"best score : {best.evaluate()}")

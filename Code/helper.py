@@ -5,6 +5,7 @@ from random import randint
 from functions import functions
 from conditions import conditions
 import itertools
+from pathlib import Path
 
 def add_dict(dict1, dict2):
     dict3 = copy.deepcopy(dict2)
@@ -94,8 +95,27 @@ def get_random_inst(lst_cards : list, lst_sanc : list):
     for i in range(8):
         n = randint(len(lst_cards))
 
-def add_sol(filepath, board):
-    pass
+def add_sol(filepath, board = 0):
+    filepath_sol = filepath[:-4] + "_sol.txt"
+    filepath_sol = "../Sujet/Solutions/" + filepath_sol[31:]
+
+    my_file = Path(filepath_sol)
+    if my_file.is_file():
+        with open(filepath_sol) as f:
+            line = f.readline()
+            score = int(line[7:])
+            if board.evaluate() > score:
+                with open(filepath_sol, "w") as file:
+                    lst_cartes = [carte.value for carte in board.cards]
+                    lst_sanc = [carte.value for carte in board.sanctuaries]
+                    file.write(f"Score : {board.evaluate()}\nregions : {lst_cartes}\nsanctuaires : {lst_sanc}")
+
+    else:
+        with open(filepath_sol, "w") as file:
+            lst_cartes = [carte.value for carte in board.cards]
+            lst_sanc = [carte.value for carte in board.sanctuaries]
+            file.write(f"Score : {board.evaluate()}\nregions : {lst_cartes}\nsanctuaires : {lst_sanc}")
+
 
 def nnnnnnnnn():
     pass
