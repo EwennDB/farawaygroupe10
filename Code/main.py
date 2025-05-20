@@ -38,24 +38,23 @@ if __name__ == '__main__':
 
     print(len(virer_inutile("../Sujet/Instances_compétition/competition_10.txt")))
 
-    # lst_boards = []
-    # for i in range(2600):
-    #     cards2 = copy.deepcopy(cards)
-    #     lst_boards.append(Board(copy.deepcopy(sanctuaries)))
+    lst_boards = []
+    for i in range(2600):
+        cards2 = copy.deepcopy(cards)
+        lst_boards.append(Board(copy.deepcopy(sanctuaries)))
 
-    #     for j in range(8):
-    #         a = randint(0, len(cards2)-1)
-    #         lst_boards[i].place_card(cards2.pop(a))
+        for j in range(8):
+            a = randint(0, len(cards2)-1)
+            lst_boards[i].place_card(cards2.pop(a))
 
-    #     for j in range(lst_boards[i].nb_sanc):
-    #         lst_boards[i].sanctuaries.append(lst_boards[i].sanctuaire_dispo.pop(0))
+        for j in range(lst_boards[i].nb_sanc):
+            lst_boards[i].sanctuaries.append(lst_boards[i].sanctuaire_dispo.pop(0))
 
-    #     print(lst_boards[0])
-    #     tmp = gradient_descent(lst_boards[i], cards)
-    #     if best.evaluate() < tmp.evaluate():
-    #         best = tmp
-    #     print(f"best : {best}")
-    #     print(f"best score : {best.evaluate()}")
+        print(lst_boards[0])
+        tmp = gradient_descent(lst_boards[i], cards)
+        if best.evaluate() < tmp.evaluate():
+            best = tmp
+        print(f"best : {best}")
+        print(f"best score : {best.evaluate()}")
 
-    # print(test)
 
