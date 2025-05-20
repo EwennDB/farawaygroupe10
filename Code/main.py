@@ -20,7 +20,7 @@ if __name__ == '__main__':
     best = Board(sanctuaries)
 
     startTime = time()
-    timeToRun = 60
+    timeToRun = 300
     endTime = startTime + timeToRun
 
     lst_boards = []
@@ -39,7 +39,9 @@ if __name__ == '__main__':
         if best.evaluate() < tmp.evaluate():
             best = tmp
             print(f"new best : {best.evaluate()}")
-            gradient_descent_regions(tmp, regions)
+            best = gradient_descent_regions(tmp, regions)
+            print(f"NEW NEW best : {best.evaluate()}")
+            print(best)
 
     add_sol(filepath, best)
 
