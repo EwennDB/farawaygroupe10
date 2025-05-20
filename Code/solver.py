@@ -97,7 +97,6 @@ def gradient_descent(board, cards):
     #stocke le meilleur board pour pouvoir revenir en arrière
     best = board.copy()
     current_score = board.evaluate()
-    print(f"base score is : {current_score}")
     while(time() <= endTime):
         for i in range(nb_iter):
             # print(board)
@@ -113,35 +112,26 @@ def gradient_descent(board, cards):
             # si il s'avère bénéfique, on le garde
             else:
                 best = board.copy()
-                print(board)
                 current_score = d_score
-                print(f"new score : {current_score}")
-                break
 
-        board = best.copy()
-        if len(board.sanctuaire_dispo) > 1:
-            for i in range(nb_iter):
+                if len(board.sanctuaire_dispo) > 1:
+                    for i in range(nb_iter):
 
-                #change les sanctuaires
-                a = randint(0, len(board.sanctuaries) - 1)
-                b = randint(0, len(board.sanctuaire_dispo) - 1)
-                board.sanctuaries[a], board.sanctuaire_dispo[b] = board.sanctuaire_dispo[b], board.sanctuaries[a]
+                        #change les sanctuaires
+                        a = randint(0, len(board.sanctuaries) - 1)
+                        b = randint(0, len(board.sanctuaire_dispo) - 1)
+                        board.sanctuaries[a], board.sanctuaire_dispo[b] = board.sanctuaire_dispo[b], board.sanctuaries[a]
 
-                score = board.evaluate()
-                if score > current_score:
-                    print(f"new score : {score}")
-                    current_score = score
-                    best = board.copy()
+                        score = board.evaluate()
+                        if score > current_score:
+                            current_score = score
+                            best = board.copy()
 
-    print(f"score : {best.evaluate()}")
-    print(best)
     return best
 
 def swap_random(board):
     '''swap 2 cartes au hasard
     renvoie le taux d'amélioration et les indices des deux cartes échangées'''
-    o_score = board.evaluate()
-
     swap_1 = randint(0,7)
     swap_2 = randint(0,7)
 

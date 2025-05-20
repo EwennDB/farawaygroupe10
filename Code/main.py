@@ -36,8 +36,6 @@ if __name__ == '__main__':
     cards2 = copy.deepcopy(cards)
     best = Board(sanctuaries)
 
-    print(len(virer_inutile("../Sujet/Instances_compétition/competition_02.txt")))
-
     lst_boards = []
     for i in range(59):
         cards2 = copy.deepcopy(cards)
@@ -50,11 +48,11 @@ if __name__ == '__main__':
         for j in range(lst_boards[i].nb_sanc):
             lst_boards[i].sanctuaries.append(lst_boards[i].sanctuaire_dispo.pop(0))
 
-        print(lst_boards[0])
         tmp = gradient_descent(lst_boards[i], cards)
         if best.evaluate() < tmp.evaluate():
             best = tmp
-        print(f"best : {best}")
-        print(f"best score : {best.evaluate()}")
+            print(f"new best : {best.evaluate()}")
 
+    print(f"best : {best}")
+    print(f"best score : {best.evaluate()}")
 
