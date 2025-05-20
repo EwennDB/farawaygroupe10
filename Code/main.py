@@ -39,7 +39,8 @@ if __name__ == '__main__':
             if best.evaluate() < tmp.evaluate():
                 best = tmp
                 print(f"new best : {best.evaluate()}")
-                #gradient_descent_regions(tmp, regions)
+                best = gradient_descent_regions(tmp, regions)
+                print(f"NEW NEW best : {best.evaluate()}")
 
         add_sol(filepath, best)
 
