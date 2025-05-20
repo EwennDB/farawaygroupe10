@@ -98,11 +98,9 @@ def gradient_descent(board, cards):
     best = board.copy()
     current_score = board.evaluate()
     while(time() <= endTime):
-        for i in range(nb_iter):
-            # print(board)
+        for _ in range(nb_iter):
             # fait un swap random nb_iter fois
-            d_score, swap_1, swap_2 = swap_random(board)
-            # print(f"swapped cards nb {swap_1} and {swap_2} and improved of {d_score}")
+            d_score = swap_random(board)
 
             # si le swap s'avère défavorable, on repart en arrière
             if d_score <= current_score:
@@ -115,7 +113,7 @@ def gradient_descent(board, cards):
                 current_score = d_score
 
                 if len(board.sanctuaire_dispo) > 1:
-                    for i in range(nb_iter):
+                    for _ in range(nb_iter):
 
                         #change les sanctuaires
                         a = randint(0, len(board.sanctuaries) - 1)
@@ -144,7 +142,7 @@ def swap_random(board):
 
     d_score = board.evaluate()
 
-    return d_score, swap_1, swap_2
+    return d_score
 
 def swap(board, swap_1, swap_2):
     '''swap 2 cartes
