@@ -86,6 +86,22 @@ def virer_inutile(filepath):
 
     return regions
 
+def change_sanctuaries(best, current_score, nb_iter):
+    board = best.copy()
+    for i in range(nb_iter):
+
+        #change les sanctuaires
+        a = randint(0, len(board.sanctuaries) - 1)
+        b = randint(0, len(board.sanctuaire_dispo) - 1)
+        board.sanctuaries[a], board.sanctuaire_dispo[b] = board.sanctuaire_dispo[b], board.sanctuaries[a]
+
+        score = board.evaluate()
+        if score > current_score:
+            current_score = score
+            best = board.copy()
+    
+    return best, current_score
+
 def gradient_descent(board):
     '''trouve le meilleur arrangement des cartes régions et place les bons sanctuaires
     Nécessite un board'''
@@ -128,48 +144,69 @@ def gradient_descent(board):
     return best
 
 def gradient_descent_regions(board, regions):
-    '''trouve le meilleur arrangement des cartes régions et place les bons sanctuaires
-    Nécessite un board'''
+    '''essaie d'échanger des régions'''
     startTime = time()
-    timeToRun = 1
+    timeToRun = 5
     endTime = startTime + timeToRun
 
     nb_iter = 10
     #stocke le meilleur board pour pouvoir revenir en arrière
     best = board.copy()
     current_score = board.evaluate()
+
+    regions_available = copy.deepcopy(regions)
+
+    for i in board.cards:
+        regions_available.remove(i)
+    
+    best_region = copy.deepcopy(regions_available)
+
     while(time() <= endTime):
         for i in range(nb_iter):
+
             # fait un swap random nb_iter fois
-            d_score = swap_random(board)
+            new_score = swap_regions(board, regions_available)
 
             # si le swap s'avère défavorable, on repart en arrière
-            if d_score <= current_score:
+            if new_score <= current_score:
                 board = best.copy()
+                regions_available = copy.deepcopy(best_region)
 
             # si il s'avère bénéfique, on le garde
             else:
                 best = board.copy()
-                current_score = d_score
+                best_region = copy.deepcopy(regions_available)
+                current_score = new_score
 
                 if len(board.sanctuaire_dispo) > 1:
-                    for i in range(nb_iter):
-
-                        #change les sanctuaires
-                        a = randint(0, len(board.sanctuaries) - 1)
-                        b = randint(0, len(board.sanctuaire_dispo) - 1)
-                        board.sanctuaries[a], board.sanctuaire_dispo[b] = board.sanctuaire_dispo[b], board.sanctuaries[a]
-
-                        score = board.evaluate()
-                        if score > current_score:
-                            current_score = score
-                            best = board.copy()
+                    best, current_score = change_sanctuaries(best, current_score, nb_iter)
 
     return best
 
+def swap_regions(board, regions):
+    '''swap 1 cartes au hasard du board avec une carte de la lst
+    renvoie le taux d'amélioration'''
+    swap_1 = randint(0,7)
+    swap_2 = randint(0,len(regions)-1)
+
+    o_nb_sanc = board.nb_sanc
+
+    tmp = copy.deepcopy(board.cards[swap_1])
+    board.cards[swap_1] = regions[swap_2]
+    regions.pop(swap_2)
+    regions.append(tmp)
+
+    board.count_nb_sanc()
+
+    adjust_nb_sanc(board, board.nb_sanc - o_nb_sanc)
+
+    new_score = board.evaluate()
+
+    return new_score
+
 def swap_random(board):
-    '''swap 2 cartes au hasard
-    renvoie le taux d'amélioration et les indices des deux cartes échangées'''
+    '''swap 2 cartes au hasard dans le board
+    renvoie le taux d'amélioration'''
     swap_1 = randint(0,7)
     swap_2 = randint(0,7)
 
@@ -179,12 +216,12 @@ def swap_random(board):
     d_nb_sanc = swap(board, swap_1, swap_2)
     adjust_nb_sanc(board, d_nb_sanc)
 
-    d_score = board.evaluate()
+    new_score = board.evaluate()
 
-    return d_score
+    return new_score
 
 def swap(board, swap_1, swap_2):
-    '''swap 2 cartes
+    '''swap 2 cartes du board
     renvoie le nb de sanctuaires perdus/gagnés'''
     o_nb_sanc = board.nb_sanc
 

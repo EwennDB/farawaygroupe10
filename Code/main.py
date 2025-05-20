@@ -36,11 +36,12 @@ if __name__ == '__main__':
         for j in range(current.nb_sanc):
             current.sanctuaries.append(current.sanctuaire_dispo.pop(0))
 
-        tmp = gradient_descent(current)
-        if best.evaluate() < tmp.evaluate():
-            best = tmp
-            print(f"new best : {best.evaluate()}")
-            #gradient_descent_regions(tmp, regions)
+            tmp = gradient_descent(current)
+            if best.evaluate() < tmp.evaluate():
+                best = tmp
+                print(f"new best : {best.evaluate()}")
+                best = gradient_descent_regions(tmp, regions)
+                print(f"NEW NEW best : {best.evaluate()}")
 
     add_sol(filepath, best)
 
