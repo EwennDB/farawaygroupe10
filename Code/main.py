@@ -38,14 +38,17 @@ if __name__ == '__main__':
             for j in range(current.nb_sanc):
                 current.sanctuaries.append(current.sanctuaire_dispo.pop(0))
 
-        tmp = gradient_descent(current)
-        score = tmp.evaluate()
-        if best.evaluate() < score:
-            best = tmp
-            floor = score
-            print(f"new best : {best.evaluate()}")
-            best = gradient_descent_regions(tmp, regions)
-            print(f"NEW NEW best : {best.evaluate()}")
+            tmp = gradient_descent(current)
+            score = tmp.evaluate()
+            if floor < score:
+                print(f"try with : {score}")
+                tmp = gradient_descent_regions(tmp, regions)
+                if best.evaluate() < tmp.evaluate():
+                    best = copy.deepcopy(tmp)
+                    floor = best.evaluate()-5
+                    print(f"new floor : {floor}")
+                    print(f"NEW NEW best : {best.evaluate()}")
+
 
         add_sol(filepath, best)
 
