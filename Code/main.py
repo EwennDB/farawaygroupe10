@@ -3,15 +3,15 @@ from Card import Card
 from helper import make_regions, make_sanctuaries, make_value_lists, add_with_order
 from functions import *
 from random import randint
-from solver import gradient_descent, swap
+from solver import gradient_descent, swap, brute_force
 import copy
 
 
 if __name__ == '__main__':
 
 
-    lst_regions = [8,25,59,68,14,17,23,28]
-    lst_sanctuaries = [108, 116, 121, 123, 125, 130]
+    lst_regions = [1,27,22,33,47,53,66,67,68]
+    lst_sanctuaries = [103,108,109,111,118,120,122]
 
     #créé les cartes régions et sanctuaires
     test = Board(make_sanctuaries(lst_sanctuaries))
@@ -44,6 +44,6 @@ if __name__ == '__main__':
 
     # print(test)
 
-    gradient_descent(test)
+    brute_force("../Sujet/Instances_hors_compétition/test2.txt")
 
     

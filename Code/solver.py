@@ -120,10 +120,11 @@ def gradient_descent(board):
             a = randint(0, len(board.sanctuaries) - 1)
             b = randint(0, len(board.sanctuaire_dispo) - 1)
             board.sanctuaries[a], board.sanctuaire_dispo[b] = board.sanctuaire_dispo[b], board.sanctuaries[a]
-            if board.evaluate() > current_score:
-                print(board)
-                print(f"new score : {current_score}")
-                current_score = board.evaluate()
+
+            score = board.evaluate()
+            if score > current_score:
+                print(f"new score : {score}")
+                current_score = score
                 best = board.copy()
 
     print(f"score : {best.evaluate()}")
