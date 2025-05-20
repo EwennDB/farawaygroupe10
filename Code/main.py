@@ -3,7 +3,7 @@ from Card import Card
 from helper import make_regions, make_sanctuaries, make_value_lists, add_with_order
 from functions import *
 from random import randint
-from solver import gradient_descent, swap, brute_force
+from solver import gradient_descent, swap, brute_force, virer_inutile
 import copy
 
 
@@ -28,7 +28,7 @@ if __name__ == '__main__':
     # test.count_all()
     # print(test.score)
 
-    lst_regions, lst_sanctuaries = make_value_lists("../Sujet/Instances_hors_compétition/8_7_a.txt")
+    lst_regions, lst_sanctuaries = make_value_lists("../Sujet/Instances_compétition/competition_10.txt")
 
     #créé les cartes régions et sanctuaires
     sanctuaries = make_sanctuaries(lst_sanctuaries)
@@ -36,24 +36,26 @@ if __name__ == '__main__':
     cards2 = copy.deepcopy(cards)
     best = Board(sanctuaries)
 
-    lst_boards = []
-    for i in range(58):
-        cards2 = copy.deepcopy(cards)
-        lst_boards.append(Board(copy.deepcopy(sanctuaries)))
+    print(len(virer_inutile("../Sujet/Instances_compétition/competition_10.txt")))
 
-        for j in range(8):
-            a = randint(0, len(cards2)-1)
-            lst_boards[i].place_card(cards2.pop(a))
+    # lst_boards = []
+    # for i in range(2600):
+    #     cards2 = copy.deepcopy(cards)
+    #     lst_boards.append(Board(copy.deepcopy(sanctuaries)))
 
-        for j in range(lst_boards[i].nb_sanc):
-            lst_boards[i].sanctuaries.append(lst_boards[i].sanctuaire_dispo.pop(0))
+    #     for j in range(8):
+    #         a = randint(0, len(cards2)-1)
+    #         lst_boards[i].place_card(cards2.pop(a))
 
-        print(lst_boards[0])
-        tmp = gradient_descent(lst_boards[i], cards)
-        if best.score < tmp.score:
-            best = tmp
-        print(f"best : {best}")
+    #     for j in range(lst_boards[i].nb_sanc):
+    #         lst_boards[i].sanctuaries.append(lst_boards[i].sanctuaire_dispo.pop(0))
+
+    #     print(lst_boards[0])
+    #     tmp = gradient_descent(lst_boards[i], cards)
+    #     if best.evaluate() < tmp.evaluate():
+    #         best = tmp
+    #     print(f"best : {best}")
+    #     print(f"best score : {best.evaluate()}")
 
     # print(test)
 
-    

@@ -76,7 +76,7 @@ def virer_inutile(filepath):
     b.place_all(lst_regions)
     for i in range(len(b.sanctuaire_dispo)):
         b.add_sanctuary(b.sanctuaire_dispo[0])
-    b.reveal_all()
+    b.reveal_all_regions()
     for i in regions:
         if i.condition is not None:
             if not i.condition(b) and len(regions) > 8:
