@@ -14,6 +14,7 @@ if __name__ == '__main__':
     filepath = f"../Sujet/Instances_compétition/competition_10.txt"
     lst_regions, lst_sanctuaries = make_value_lists(filepath)
 
+    print(lst_sanctuaries)
     #créé les cartes régions et sanctuaires
     sanctuaries = make_sanctuaries(lst_sanctuaries)
     regions = make_regions(lst_regions)
@@ -36,12 +37,12 @@ if __name__ == '__main__':
         for j in range(current.nb_sanc):
             current.sanctuaries.append(current.sanctuaire_dispo.pop(0))
 
-            tmp = gradient_descent(current)
-            if best.evaluate() < tmp.evaluate():
-                best = tmp
-                print(f"new best : {best.evaluate()}")
-                best = gradient_descent_regions(tmp, regions)
-                print(f"NEW NEW best : {best.evaluate()}")
+        tmp = gradient_descent(current)
+        if best.evaluate() < tmp.evaluate():
+            best = tmp
+            print(f"new best : {best.evaluate()}")
+            best = gradient_descent_regions(tmp, regions)
+            print(f"NEW NEW best : {best.evaluate()}")
 
     add_sol(filepath, best)
 

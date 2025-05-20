@@ -116,7 +116,6 @@ class Board:
         self.calc_all_sanctuary_score()
         return o
 
-
     ## Autres
     def copy(self):
         return deepcopy(self)
