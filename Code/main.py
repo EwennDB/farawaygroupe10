@@ -8,7 +8,7 @@ import copy
 
 if __name__ == '__main__':
 
-    lst_regions, lst_sanctuaries = make_value_lists("../Sujet/Instances_compétition/competition_10.txt")
+    lst_regions, lst_sanctuaries = make_value_lists("../Sujet/Instances_compétition/competition_01.txt")
 
     #créé les cartes régions et sanctuaires
     sanctuaries = make_sanctuaries(lst_sanctuaries)
