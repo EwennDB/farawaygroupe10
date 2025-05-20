@@ -20,6 +20,7 @@ if __name__ == '__main__':
     regions = make_regions(lst_regions)
     regions2 = copy.deepcopy(regions)
     best = Board(sanctuaries)
+    floor = 0
 
     startTime = time()
     timeToRun = 60
@@ -38,8 +39,10 @@ if __name__ == '__main__':
             current.sanctuaries.append(current.sanctuaire_dispo.pop(0))
 
         tmp = gradient_descent(current)
-        if best.evaluate() < tmp.evaluate():
+        score = tmp.evaluate()
+        if best.evaluate() < score:
             best = tmp
+            floor = score
             print(f"new best : {best.evaluate()}")
             best = gradient_descent_regions(tmp, regions)
             print(f"NEW NEW best : {best.evaluate()}")
