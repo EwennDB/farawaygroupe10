@@ -11,7 +11,7 @@ if __name__ == '__main__':
     # for i in range(1, 10):
     # filepath = f"../Sujet/Instances_compétition/competition_0{str(i)}.txt"
 
-    filepath = f"../Sujet/Instances_compétition/competition_10.txt"
+    filepath = f"../Sujet/Instances_compétition/competition_01.txt"
     lst_regions, lst_sanctuaries = make_value_lists(filepath)
 
     print(lst_sanctuaries)
@@ -22,7 +22,7 @@ if __name__ == '__main__':
     best = Board(sanctuaries)
 
     startTime = time()
-    timeToRun = 300
+    timeToRun = 60
     endTime = startTime + timeToRun
 
     lst_boards = []
