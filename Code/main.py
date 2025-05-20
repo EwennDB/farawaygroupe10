@@ -1,5 +1,5 @@
 from Board import Board
-from helper import make_regions, make_sanctuaries, make_value_lists
+from helper import make_regions, make_sanctuaries, make_value_lists, add_sol
 from functions import *
 from random import randint
 from solver import gradient_descent, gradient_descent_regions
@@ -9,7 +9,9 @@ from time import time
 
 if __name__ == '__main__':
 
-    lst_regions, lst_sanctuaries = make_value_lists("../Sujet/Instances_compétition/competition_01.txt")
+    filepath = "../Sujet/Instances_compétition/competition_10.txt"
+
+    lst_regions, lst_sanctuaries = make_value_lists(filepath)
 
     #créé les cartes régions et sanctuaires
     sanctuaries = make_sanctuaries(lst_sanctuaries)
@@ -38,6 +40,8 @@ if __name__ == '__main__':
             best = tmp
             print(f"new best : {best.evaluate()}")
             gradient_descent_regions(tmp, regions)
+
+    add_sol(filepath, best)
 
     print(f"best : {best}")
     print(f"best score : {best.evaluate()}")

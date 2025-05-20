@@ -94,5 +94,8 @@ def get_random_inst(lst_cards : list, lst_sanc : list):
     for i in range(8):
         n = randint(len(lst_cards))
 
+def add_sol(filepath, board):
+    pass
+
 def nnnnnnnnn():
     pass
