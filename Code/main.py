@@ -1,5 +1,5 @@
 from Board import Board
-from helper import make_regions, make_sanctuaries, make_value_lists, add_with_order
+from helper import make_regions, make_sanctuaries, make_value_lists
 from functions import *
 from random import randint
 from solver import gradient_descent
