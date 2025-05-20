@@ -37,7 +37,7 @@ if __name__ == '__main__':
     best = Board(sanctuaries)
 
     lst_boards = []
-    for i in range(59):
+    for i in range(2600):
         cards2 = copy.deepcopy(cards)
         lst_boards.append(Board(copy.deepcopy(sanctuaries)))
 
