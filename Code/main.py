@@ -10,12 +10,12 @@ import copy
 if __name__ == '__main__':
 
 
-    lst_regions = [1,27,22,33,47,53,66,67,68]
-    lst_sanctuaries = [103,108,109,111,118,120,122]
+    # lst_regions = [1,27,22,33,47,53,66,67,68]
+    # lst_sanctuaries = [103,108,109,111,118,120,122]
 
-    #créé les cartes régions et sanctuaires
-    test = Board(make_sanctuaries(lst_sanctuaries))
-    cards = make_regions(lst_regions)
+    # #créé les cartes régions et sanctuaires
+    # test = Board(make_sanctuaries(lst_sanctuaries))
+    # cards = make_regions(lst_regions)
 
     # #révèle les régions
     # for i in range(8):
@@ -28,8 +28,7 @@ if __name__ == '__main__':
     # test.count_all()
     # print(test.score)
 
-    lst_regions = [8,14,17,23,25,28,59,68]
-    lst_sanctuaries = [108, 116, 121, 123, 125, 130, 131]
+    lst_regions, lst_sanctuaries = make_value_lists("../Sujet/Instances_hors_compétition/8_7_a.txt")
 
     #créé les cartes régions et sanctuaires
     test = Board(make_sanctuaries(lst_sanctuaries))
@@ -44,6 +43,6 @@ if __name__ == '__main__':
 
     # print(test)
 
-    brute_force("../Sujet/Instances_hors_compétition/test2.txt")
+    gradient_descent(test, cards)
 
     
