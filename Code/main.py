@@ -18,7 +18,7 @@ if __name__ == '__main__':
     best = Board(sanctuaries)
 
     startTime = time()
-    timeToRun = 60
+    timeToRun = 300
     endTime = startTime + timeToRun
 
     lst_boards = []
@@ -33,7 +33,7 @@ if __name__ == '__main__':
         for j in range(current.nb_sanc):
             current.sanctuaries.append(current.sanctuaire_dispo.pop(0))
 
-        tmp = gradient_descent(current, regions)
+        tmp = gradient_descent(current)
         if best.evaluate() < tmp.evaluate():
             best = tmp
             print(f"new best : {best.evaluate()}")
