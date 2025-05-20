@@ -86,7 +86,48 @@ def virer_inutile(filepath):
 
     return regions
 
-def gradient_descent(board, cards):
+def gradient_descent(board):
+    '''trouve le meilleur arrangement des cartes régions et place les bons sanctuaires
+    Nécessite un board'''
+    startTime = time()
+    timeToRun = 1
+    endTime = startTime + timeToRun
+
+    nb_iter = 10
+    #stocke le meilleur board pour pouvoir revenir en arrière
+    best = board.copy()
+    current_score = board.evaluate()
+    while(time() <= endTime):
+        for _ in range(nb_iter):
+            # fait un swap random nb_iter fois
+            d_score = swap_random(board)
+
+            # si le swap s'avère défavorable, on repart en arrière
+            if d_score <= current_score:
+                board = best.copy()
+                # print("reversed")
+
+            # si il s'avère bénéfique, on le garde
+            else:
+                best = board.copy()
+                current_score = d_score
+
+                if len(board.sanctuaire_dispo) > 1:
+                    for _ in range(nb_iter):
+
+                        #change les sanctuaires
+                        a = randint(0, len(board.sanctuaries) - 1)
+                        b = randint(0, len(board.sanctuaire_dispo) - 1)
+                        board.sanctuaries[a], board.sanctuaire_dispo[b] = board.sanctuaire_dispo[b], board.sanctuaries[a]
+
+                        score = board.evaluate()
+                        if score > current_score:
+                            current_score = score
+                            best = board.copy()
+
+    return best
+
+def gradient_descent_regions(board, regions):
     '''trouve le meilleur arrangement des cartes régions et place les bons sanctuaires
     Nécessite un board'''
     startTime = time()

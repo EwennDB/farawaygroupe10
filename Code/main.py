@@ -2,8 +2,9 @@ from Board import Board
 from helper import make_regions, make_sanctuaries, make_value_lists
 from functions import *
 from random import randint
-from solver import gradient_descent
+from solver import gradient_descent, gradient_descent_regions
 import copy
+from time import time
 
 
 if __name__ == '__main__':
@@ -12,26 +13,31 @@ if __name__ == '__main__':
 
     #créé les cartes régions et sanctuaires
     sanctuaries = make_sanctuaries(lst_sanctuaries)
-    cards = make_regions(lst_regions)
-    cards2 = copy.deepcopy(cards)
+    regions = make_regions(lst_regions)
+    regions2 = copy.deepcopy(regions)
     best = Board(sanctuaries)
 
+    startTime = time()
+    timeToRun = 60
+    endTime = startTime + timeToRun
+
     lst_boards = []
-    for i in range(60):
-        cards2 = copy.deepcopy(cards)
-        lst_boards.append(Board(copy.deepcopy(sanctuaries)))
+    while time() <= endTime:
+        regions2 = copy.deepcopy(regions)
+        current = Board(copy.deepcopy(sanctuaries))
 
         for j in range(8):
-            a = randint(0, len(cards2)-1)
-            lst_boards[i].place_card(cards2.pop(a))
+            a = randint(0, len(regions2)-1)
+            current.place_card(regions2.pop(a))
 
-        for j in range(lst_boards[i].nb_sanc):
-            lst_boards[i].sanctuaries.append(lst_boards[i].sanctuaire_dispo.pop(0))
+        for j in range(current.nb_sanc):
+            current.sanctuaries.append(current.sanctuaire_dispo.pop(0))
 
-        tmp = gradient_descent(lst_boards[i], cards)
+        tmp = gradient_descent(current, regions)
         if best.evaluate() < tmp.evaluate():
             best = tmp
             print(f"new best : {best.evaluate()}")
+            gradient_descent_regions(tmp, regions)
 
     print(f"best : {best}")
     print(f"best score : {best.evaluate()}")
