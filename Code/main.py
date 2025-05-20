@@ -36,10 +36,10 @@ if __name__ == '__main__':
     cards2 = copy.deepcopy(cards)
     best = Board(sanctuaries)
 
-    print(len(virer_inutile("../Sujet/Instances_compétition/competition_09.txt")))
+    print(len(virer_inutile("../Sujet/Instances_compétition/competition_10.txt")))
 
     lst_boards = []
-    for i in range(3600):
+    for i in range(2600):
         cards2 = copy.deepcopy(cards)
         lst_boards.append(Board(copy.deepcopy(sanctuaries)))
 
