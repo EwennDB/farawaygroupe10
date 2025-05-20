@@ -1,9 +1,8 @@
 from Board import Board
-from Card import Card
-from helper import make_regions, make_sanctuaries, make_value_lists, add_with_order
+from helper import make_regions, make_sanctuaries, make_value_lists
 from functions import *
 from random import randint
-from solver import gradient_descent, swap, brute_force, virer_inutile
+from solver import gradient_descent
 import copy
 
 
@@ -37,7 +36,7 @@ if __name__ == '__main__':
     best = Board(sanctuaries)
 
     lst_boards = []
-    for i in range(2600):
+    for i in range(60):
         cards2 = copy.deepcopy(cards)
         lst_boards.append(Board(copy.deepcopy(sanctuaries)))
 
