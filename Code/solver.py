@@ -139,14 +139,13 @@ def gradient_descent_regions(board, regions):
     best = board.copy()
     current_score = board.evaluate()
     while(time() <= endTime):
-        for _ in range(nb_iter):
+        for i in range(nb_iter):
             # fait un swap random nb_iter fois
-            d_score = swap_random(board)
+            d_score, swap_1, swap_2 = swap_random(board)
 
             # si le swap s'avère défavorable, on repart en arrière
             if d_score <= current_score:
                 board = best.copy()
-                # print("reversed")
 
             # si il s'avère bénéfique, on le garde
             else:
@@ -154,7 +153,7 @@ def gradient_descent_regions(board, regions):
                 current_score = d_score
 
                 if len(board.sanctuaire_dispo) > 1:
-                    for _ in range(nb_iter):
+                    for i in range(nb_iter):
 
                         #change les sanctuaires
                         a = randint(0, len(board.sanctuaries) - 1)
@@ -178,12 +177,11 @@ def swap_random(board):
         swap_2 = randint(0,7)
 
     d_nb_sanc = swap(board, swap_1, swap_2)
-    # print(f"d_nb_anc : {d_nb_sanc}")
     adjust_nb_sanc(board, d_nb_sanc)
 
     d_score = board.evaluate()
 
-    return d_score
+    return d_score, swap_1, swap_2
 
 def swap(board, swap_1, swap_2):
     '''swap 2 cartes
