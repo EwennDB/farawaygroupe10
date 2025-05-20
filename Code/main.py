@@ -31,18 +31,29 @@ if __name__ == '__main__':
     lst_regions, lst_sanctuaries = make_value_lists("../Sujet/Instances_hors_compétition/8_7_a.txt")
 
     #créé les cartes régions et sanctuaires
-    test = Board(make_sanctuaries(lst_sanctuaries))
+    sanctuaries = make_sanctuaries(lst_sanctuaries)
     cards = make_regions(lst_regions)
+    cards2 = copy.deepcopy(cards)
+    best = Board(sanctuaries)
 
-    #révèle les régions
-    for i in range(8):
-        test.place_card(cards.pop(0))
+    lst_boards = []
+    for i in range(58):
+        cards2 = copy.deepcopy(cards)
+        lst_boards.append(Board(copy.deepcopy(sanctuaries)))
 
-    for i in range(test.nb_sanc):
-        test.sanctuaries.append(test.sanctuaire_dispo.pop(0))
+        for j in range(8):
+            a = randint(0, len(cards2)-1)
+            lst_boards[i].place_card(cards2.pop(a))
+
+        for j in range(lst_boards[i].nb_sanc):
+            lst_boards[i].sanctuaries.append(lst_boards[i].sanctuaire_dispo.pop(0))
+
+        print(lst_boards[0])
+        tmp = gradient_descent(lst_boards[i], cards)
+        if best.score < tmp.score:
+            best = tmp
+        print(f"best : {best}")
 
     # print(test)
-
-    gradient_descent(test, cards)
 
     

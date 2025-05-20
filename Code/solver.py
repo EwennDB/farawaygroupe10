@@ -89,7 +89,7 @@ def gradient_descent(board, cards):
     '''trouve le meilleur arrangement des cartes régions et place les bons sanctuaires
     Nécessite un board'''
     startTime = time()
-    timeToRun = 60
+    timeToRun = 1
     endTime = startTime + timeToRun
 
     nb_iter = 10
@@ -134,6 +134,7 @@ def gradient_descent(board, cards):
 
     print(f"score : {best.evaluate()}")
     print(best)
+    return best
 
 def swap_random(board):
     '''swap 2 cartes au hasard
