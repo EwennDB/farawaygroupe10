@@ -39,7 +39,7 @@ if __name__ == '__main__':
     print(len(virer_inutile("../Sujet/Instances_compétition/competition_10.txt")))
 
     lst_boards = []
-    for i in range(2600):
+    for i in range(1800):
         cards2 = copy.deepcopy(cards)
         lst_boards.append(Board(copy.deepcopy(sanctuaries)))
 
