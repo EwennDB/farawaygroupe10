@@ -105,6 +105,7 @@ def add_sol(filepath, board = 0):
             line = f.readline()
             score = int(line[7:])
             if board.evaluate() > score:
+                print(f"found better : {board.evaluate()}")
                 with open(filepath_sol, "w") as file:
                     lst_cartes = [carte.value for carte in board.cards]
                     lst_sanc = [carte.value for carte in board.sanctuaries]
