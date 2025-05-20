@@ -141,7 +141,7 @@ def gradient_descent_regions(board, regions):
     while(time() <= endTime):
         for i in range(nb_iter):
             # fait un swap random nb_iter fois
-            d_score, swap_1, swap_2 = swap_random(board)
+            d_score = swap_random(board)
 
             # si le swap s'avère défavorable, on repart en arrière
             if d_score <= current_score:
@@ -181,7 +181,7 @@ def swap_random(board):
 
     d_score = board.evaluate()
 
-    return d_score, swap_1, swap_2
+    return d_score
 
 def swap(board, swap_1, swap_2):
     '''swap 2 cartes
