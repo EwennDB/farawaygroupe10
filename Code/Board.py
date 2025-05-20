@@ -19,12 +19,8 @@ class Board:
 
     def __repr__(self):
         '''représente le board'''
-        chaine = "score : "
-        chaine += str(self.score)
-
-        chaine += " pos : " + str(self.pos)
-
-        chaine += " cards : "
+        
+        chaine = " cards : "
 
         for i in self.cards:
             chaine += str(i.value)
