@@ -109,7 +109,7 @@ def gradient_descent(board):
     timeToRun = 1
     endTime = startTime + timeToRun
 
-    nb_iter = 20
+    nb_iter = 50
     #stocke le meilleur board pour pouvoir revenir en arrière
     best = board.copy()
     current_score = board.evaluate()

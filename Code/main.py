@@ -8,7 +8,7 @@ from time import time
 
 
 if __name__ == '__main__':
-    for i in range(3, 4):
+    for i in range(5, 6):
         filepath = f"../Sujet/Instances_compétition/competition_0{str(i)}.txt"
 
     # filepath = f"../Sujet/Instances_compétition/competition_10.txt"
@@ -23,7 +23,7 @@ if __name__ == '__main__':
         floor = 0
 
         startTime = time()
-        timeToRun = 600
+        timeToRun = 3600
         endTime = startTime + timeToRun
 
         lst_boards = []
