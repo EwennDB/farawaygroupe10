@@ -1,0 +1,40 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    color: #444;
+    font-family: Ubuntu, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+nav {
+    background-color: #800;
+    padding: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 26px;
+    border: 1px solid black;
+}
+
+nav>ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    border-bottom: 1px solid black;
+}
+
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+    unicode-bidi: isolate;
+}
