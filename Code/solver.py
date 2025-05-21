@@ -102,11 +102,10 @@ def change_sanctuaries(best, current_score, nb_iter):
     
     return best, current_score
 
-def gradient_descent(board):
+def gradient_descent(board, timeToRun = 1):
     '''trouve le meilleur arrangement des cartes régions et place les bons sanctuaires
     Nécessite un board'''
     startTime = time()
-    timeToRun = 1
     endTime = startTime + timeToRun
 
     nb_iter = 50
@@ -143,13 +142,12 @@ def gradient_descent(board):
 
     return best
 
-def gradient_descent_regions(board, regions):
+def gradient_descent_regions(board, regions, timeToRun = 1):
     '''essaie d'échanger des régions'''
     startTime = time()
-    timeToRun = 5
     endTime = startTime + timeToRun
 
-    nb_iter = 50
+    nb_iter = 100
     #stocke le meilleur board pour pouvoir revenir en arrière
     best = board.copy()
     current_score = board.evaluate()
@@ -174,6 +172,48 @@ def gradient_descent_regions(board, regions):
 
             # si il s'avère bénéfique, on le garde
             else:
+                best = board.copy()
+                best_region = copy.deepcopy(regions_available)
+                current_score = new_score
+
+                if len(board.sanctuaire_dispo) > 1:
+                    best, current_score = change_sanctuaries(best, current_score, nb_iter)
+
+    return best
+
+def gradient_descent_regions_N(board, regions, timeToRun = 1, N = 1):
+    '''essaie d'échanger des régions'''
+    startTime = time()
+    endTime = startTime + timeToRun
+
+    nb_iter = 100
+    #stocke le meilleur board pour pouvoir revenir en arrière
+    best = board.copy()
+    current_score = board.evaluate()
+
+    regions_available = copy.deepcopy(regions)
+
+    for i in board.cards:
+        regions_available.remove(i)
+    
+    best_region = copy.deepcopy(regions_available)
+
+    while(time() <= endTime):
+        for i in range(nb_iter):
+
+            # fait 2 swap random nb_iter fois
+            for _ in range(N-1):
+                swap_regions(board, regions_available)
+            new_score = swap_regions(board, regions_available)
+
+            # si les swap s'avère défavorable, on repart en arrière
+            if new_score <= current_score:
+                board = best.copy()
+                regions_available = copy.deepcopy(best_region)
+
+            # si il s'avère bénéfique, on le garde
+            else:
+                board = gradient_descent(board, 0.1)
                 best = board.copy()
                 best_region = copy.deepcopy(regions_available)
                 current_score = new_score
