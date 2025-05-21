@@ -117,6 +117,5 @@ def add_sol(filepath, board = 0):
             lst_sanc = [carte.value for carte in board.sanctuaries]
             file.write(f"Score : {board.evaluate()}\nregions : {lst_cartes}\nsanctuaires : {lst_sanc}")
 
-
 def nnnnnnnnn():
     pass
