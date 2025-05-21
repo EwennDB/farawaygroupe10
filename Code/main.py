@@ -1,5 +1,5 @@
 from Board import Board
-from helper import make_regions, make_sanctuaries, make_value_lists, add_sol
+from helper import make_regions, make_sanctuaries, make_value_lists, add_sol, nnnnnnnnn
 from functions import *
 from random import randint
 from solver import gradient_descent, gradient_descent_regions
@@ -51,6 +51,8 @@ if __name__ == '__main__':
 
 
         add_sol(filepath, best)
+
+        nnnnnnnnn()
 
         print(f"best : {best}")
         print(f"best score : {best.evaluate()}")
