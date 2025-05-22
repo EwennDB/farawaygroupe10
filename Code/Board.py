@@ -41,7 +41,20 @@ class Board:
 
     def copy(self) -> object:
         '''renvoie une copie de ce plateau'''
-        return deepcopy(self)
+        result = Board()
+        result.cards = [k for k in self.cards]
+        result.sanctuaries = [k for k in self.sanctuaries]
+        result.sanctuaire_dispo = [k for k in self.sanctuaire_dispo]
+    
+        result.couleurs = {k for k in self.couleurs.items()}
+        result.nuits = self.nuits
+        result.indices = self.indices
+        result.merveilles = {k for k in self.merveilles.items()}
+        result.score = self.score
+        result.pos = self.pos
+        result.nb_sanc = self.nb_sanc
+
+        return result
     
     ##Placements Régions/Sanctuaires
     def place_card(self, card, sanc = None):

@@ -290,18 +290,19 @@ def get_best_score(filepath):
     #créé les cartes régions et sanctuaires
     sanctuaries = make_sanctuaries(lst_sanctuaries)
     regions = make_regions(lst_regions)
-    regions2 = copy.deepcopy(regions)
+    regions2 = [k for k in regions]
     best = Board(sanctuaries)
+    best_score = best.evaluate()
     floor = 0
 
-    #se limite a 60 secondes
+    #se limite à 60 secondes
     startTime = time()
     timeToRun = 600
     endTime = startTime + timeToRun
 
     while time() <= endTime:
-        regions2 = copy.deepcopy(regions)
-        current = Board(copy.deepcopy(sanctuaries))
+        regions2 = [k for k in regions]
+        current = Board([k for k in sanctuaries])
 
         for j in range(8):
             a = randint(0, len(regions2)-1)
@@ -317,15 +318,15 @@ def get_best_score(filepath):
             if endTime-time() > 2:
                 print(f"try with : {score}")
                 tmp = gradient_descent_regions(tmp, regions, timeToRun = 2)
-                tmp = gradient_descent_regions_N(tmp, regions, timeToRun = 2, N = 2)
             else:
                 print(f"try with : {score}")
                 tmp = gradient_descent_regions(tmp, regions, timeToRun = endTime-time())
-            if best.evaluate() < tmp.evaluate():
-                best = copy.deepcopy(tmp)
-                floor = int(best.evaluate()*2/3)
+            if best_score < tmp.evaluate():
+                best = tmp.copy()
+                best_score = best.evaluate()
+                floor = int(best_score*2/3)
                 print(f"new floor : {floor}")
-                print(f"NEW NEW best : {best.evaluate()}")
+                print(f"NEW NEW best : {best_score}")
 
     nnnnnnnnn()
 
