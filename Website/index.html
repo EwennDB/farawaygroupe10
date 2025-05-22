@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Faraway Groupe 10</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+       rel="stylesheet"
+       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+       crossorigin="anonymous">
+  </head>
+  <body>
+    <header class="bg-primary text-white text-center py-5">
+        <div class="container">
+            <h1 class="display-4">Faraway Groupe 10</h1>
+        </div>
+    </header>
+  
+<!-- Barre de navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <!-- <a class="navbar-brand" href="#">Accueil</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button> -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" style="color:azure;">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="groupe.html">Équipe</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="resultats.html">Résultats</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="algo.html">Algorithmes</a>
+                </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section>
+        <h2>Description du Problème</h2>
+        <p>Voir le <a href="https://moodle.univ-angers.fr/pluginfile.php/3071112/mod_resource/content/11/Sujet_Concretisation_2025.pdf">sujet</a>.</p>
+        <p>
+            Le problème consiste à trouver le meilleur score pour une main de faraway donnée en paramètre.
+            <br>
+            Une main est composée d'une liste de cartes régions et une de cartes sanctuaires. Un Board (classe python) est une configuration de cartes régions et sanctuaires.
+            <br>
+            Une carte rapporte des ressources lorsqu'elle est retournée. Le score est calculé en fonction de ce que chaque carte rapporte si sa condition est remplie. Une carte rapporte ensuite des points purs ou des points selon les ressources apparentes.
+        </p>
+</p>
+    </section>
+
+    <section>
+                <h2>Installation</h2>
+                <ul>
+                    <li>
+                        Téléchargez l'archive du projet sur <a href="https://github.com/EwennDB/farawaygroupe10">GitHub</a> (Code -&gt; Download ZIP)                    
+                    </li>
+                    <li>
+                        Sauvegardez votre instance dans le dossier<b>Sujet/Instances_compétition/</b>
+                    </li>
+                    <li>
+                        Ouvrez un terminal, placez vous dans le dossier <b>farawaygroupe10/Code</b>, Éxécutez la commande :<b>python main.py</b> et entrez le nom du fichier de l'instance (sans le .txt)
+                    </li>
+                    <li>
+                        Le résultat de l'execution sera affiché dans le terminal a la fin de l'éxécution
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                
+                <h3>Syntaxe de la sortie (Board)</h3>
+                <p>
+                    À la fin de l'éxécution, le programme affichera le Board résultant de l'execution. Le Board est décrit par : <b>cards :-liste des numéros des cartes- sanctuaries:-liste des numéros des sanctuaires-</b>
+                </p>
+            </section>
+
+    <footer class="bg-dark text-white text-center py-2">
+        <div class="container">
+            <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0" style="text-decoration:none;">Footer</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+   integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+   crossorigin="anonymous">
+    </script>
+  </body>
+
+</html>
