@@ -21,7 +21,7 @@ if __name__ == '__main__':
 
     #     add_sol(filepath, best)
     
-    for i in range(0,6):
+    for i in range(1,6):
         filepath = f"../Sujet/Instances_compétition/competition_1{str(i)}.txt"
 
         print(f"compétition n°1{str(i)} :")

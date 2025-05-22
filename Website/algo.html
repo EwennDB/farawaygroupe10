@@ -11,6 +11,7 @@
        crossorigin="anonymous">
     
   </head>
+  
   <body>
     <header class="bg-primary text-white text-center py-5">
         <div class="container">
@@ -45,26 +46,35 @@
     </nav>
 
     <section>
-                <h2>Solutions</h2>
-                <p>
-                    Cette page présente les différents algorithmes utilisés pour répondre au problème.<br>
-                    Les noms des algorithmes sont purement arbitraires.
-                </p>
-            </section>
+        <h2>Solutions</h2>
+        <p>
+            Cette page présente les différents algorithmes utilisés pour répondre au problème.<br>
+            Les noms des algorithmes sont purement arbitraires.
+        </p>
+    </section>
 
     <section>
-                <h2>Algorithme Brute Force</h2>
-                <p>
-                    L'algorithme est basé sur la méthode du "bruteforce". Le principe est de trouver le meilleur board en les testant tous.
+        <h2>Algorithme Brute Force</h2>
+        <p>
+            L'algorithme est basé sur la méthode du "bruteforce". Le principe est de trouver le meilleur board en les testant tous.
 
-On génère et teste tous les board en stockant le meilleur dans une variable auxiliaire. Une fois tous les boards testés, on peut être sûr d'avoir obtenu le meilleur pour l'instance passée en paramètre. Cet algorithme est donc très précis.
+            On génère et teste tous les board en stockant le meilleur dans une variable auxiliaire. Une fois tous les boards testés, on peut être sûr d'avoir obtenu le meilleur pour l'instance passée en paramètre. Cet algorithme est donc très précis.
 
-Cependant, l'algorithme atteint rapidement des temps très élevés...
-                </p>
-            </section>
-            <section>
-                <h2>Algorithme Gradient Descent</h2>
-            </section>
+            Cependant, l'algorithme atteint rapidement des temps très élevés...
+        </p>
+    </section>
+
+    <section>
+        <h2>Algorithme Gradient Descent</h2>
+        <p>
+            Notre Algorithme "Gradient Descent" fonctionne comme décrit sur l'image ci-dessous, La différence principale est que l'input a une dimension variant de 8 à 15 (8 pour les régions +0 à 7 pour les Sanctuaires).
+        </p>
+        <img src="images/gradient_descent.jpg" alt="">
+        <p>
+            Le problème c'est que le nombre de possibilités est tout bonnement gargantuesque.</br>
+            Et de plus, cet algorithme pousse vers un optimum <b>local</b>, ce qui n'est pas nécessairement le maximum <b>global</b>, c'est pourquoi on réitère l'opération de nombreuses fois avec des inputs choisis au hasard.
+        </p>
+    </section>
 
     <footer class="bg-dark text-white text-center py-2">
         <div class="container">

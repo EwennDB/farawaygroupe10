@@ -296,7 +296,7 @@ def get_best_score(filepath):
 
     #se limite a 60 secondes
     startTime = time()
-    timeToRun = 59
+    timeToRun = 600
     endTime = startTime + timeToRun
 
     while time() <= endTime:
@@ -317,6 +317,7 @@ def get_best_score(filepath):
             if endTime-time() > 2:
                 print(f"try with : {score}")
                 tmp = gradient_descent_regions(tmp, regions, timeToRun = 2)
+                tmp = gradient_descent_regions_N(tmp, regions, timeToRun = 2, N = 2)
             else:
                 print(f"try with : {score}")
                 tmp = gradient_descent_regions(tmp, regions, timeToRun = endTime-time())
