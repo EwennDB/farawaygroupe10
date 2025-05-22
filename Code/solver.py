@@ -1,8 +1,8 @@
 from Board import Board
-from helper import make_regions, make_sanctuaries, make_value_lists, combinations
+from helper import make_regions, make_sanctuaries, make_value_lists, combinations, nnnnnnnnn
 import copy
 from random import randint
-from time import sleep, time
+from time import time
 
 def brute_force(path_instance) :
     '''brute_force toutes les possibilités d'une instance,
@@ -282,3 +282,52 @@ def adjust_nb_sanc(board, d_nb_sanc):
     elif d_nb_sanc < 0:
         for _ in range(-d_nb_sanc):
             board.sanctuaire_dispo.append(board.sanctuaries.pop(0))
+
+def get_best_score(filepath):
+    
+    lst_regions, lst_sanctuaries = make_value_lists(filepath)
+
+    #créé les cartes régions et sanctuaires
+    sanctuaries = make_sanctuaries(lst_sanctuaries)
+    regions = make_regions(lst_regions)
+    regions2 = copy.deepcopy(regions)
+    best = Board(sanctuaries)
+    floor = 0
+
+    #se limite a 60 secondes
+    startTime = time()
+    timeToRun = 59
+    endTime = startTime + timeToRun
+
+    while time() <= endTime:
+        regions2 = copy.deepcopy(regions)
+        current = Board(copy.deepcopy(sanctuaries))
+
+        for j in range(8):
+            a = randint(0, len(regions2)-1)
+            current.place_card(regions2.pop(a))
+
+        for j in range(current.nb_sanc):
+            current.sanctuaries.append(current.sanctuaire_dispo.pop(0))
+
+        tmp = gradient_descent(current, 1)
+        score = tmp.evaluate()
+        if floor < score:
+            #ne dépasse pas le tps
+            if endTime-time() > 2:
+                print(f"try with : {score}")
+                tmp = gradient_descent_regions(tmp, regions, timeToRun = 2)
+            else:
+                print(f"try with : {score}")
+                tmp = gradient_descent_regions(tmp, regions, timeToRun = endTime-time())
+            if best.evaluate() < tmp.evaluate():
+                best = copy.deepcopy(tmp)
+                floor = int(best.evaluate()*2/3)
+                print(f"new floor : {floor}")
+                print(f"NEW NEW best : {best.evaluate()}")
+
+    nnnnnnnnn()
+
+    # print(f"best : {best}")
+    # print(f"best score : {best.evaluate()}")
+    return best

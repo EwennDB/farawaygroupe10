@@ -1,61 +1,33 @@
-from Board import Board
-from helper import make_regions, make_sanctuaries, make_value_lists, add_sol, nnnnnnnnn
-from functions import *
-from random import randint
-from solver import gradient_descent, gradient_descent_regions, gradient_descent_regions_N
-import copy
+from solver import get_best_score
+from helper import add_sol
 from time import time
-
+from tqdm import tqdm
 
 if __name__ == '__main__':
-    #for i in range(5, 6):
     
-    filepath = f"../Sujet/Instances_compétition/competition_07.txt"
-    # filepath = f"../Sujet/autres/all.txt"
+    # filepath = input()
+    # best = get_best_score(filepath)
+    # print(best, best.evaluate())
 
-# filepath = f"../Sujet/Instances_compétition/competition_10.txt"
-    lst_regions, lst_sanctuaries = make_value_lists(filepath)
+    # for i in range(1,10):
+    #     filepath = f"../Sujet/Instances_compétition/competition_0{str(i)}.txt"
 
-    print(lst_sanctuaries)
-    #créé les cartes régions et sanctuaires
-    sanctuaries = make_sanctuaries(lst_sanctuaries)
-    regions = make_regions(lst_regions)
-    regions2 = copy.deepcopy(regions)
-    best = Board(sanctuaries)
-    floor = 0
+    #     print(f"compétition n°{str(i)} :")
 
-    startTime = time()
-    timeToRun = 60
-    endTime = startTime + timeToRun
+    #     t = time()
+    #     best = get_best_score(filepath)
+    #     print(f"temps : {time()-t}")
+    #     print(f"score : {best.evaluate()}")
 
-    lst_boards = []
-    while time() <= endTime:
-        regions2 = copy.deepcopy(regions)
-        current = Board(copy.deepcopy(sanctuaries))
+    #     add_sol(filepath, best)
+    
+    for i in range(0,6):
+        filepath = f"../Sujet/Instances_compétition/competition_1{str(i)}.txt"
 
-        for j in range(8):
-            a = randint(0, len(regions2)-1)
-            current.place_card(regions2.pop(a))
+        print(f"compétition n°1{str(i)} :")
+        t = time()
+        best = get_best_score(filepath)
+        print(f"temps : {time()-t}")
+        print(f"score : {best.evaluate()}")
 
-        for j in range(current.nb_sanc):
-            current.sanctuaries.append(current.sanctuaire_dispo.pop(0))
-
-        if current.evaluate() > 30:
-            tmp = gradient_descent_regions(current, regions, 1)
-            score = tmp.evaluate()
-            if floor < score:
-                print(f"try with : {score}")
-                tmp = gradient_descent_regions_N(tmp, regions, timeToRun = 5, N = 3)
-                if best.evaluate() < tmp.evaluate():
-                    best = copy.deepcopy(tmp)
-                    floor = best.evaluate()-10
-                    print(f"new floor : {floor}")
-                    print(f"NEW NEW best : {best.evaluate()}")
-
-
-        # add_sol(filepath, best)
-
-        nnnnnnnnn()
-
-    print(f"best : {best}")
-    print(f"best score : {best.evaluate()}")
+        add_sol(filepath, best)
