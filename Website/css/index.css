@@ -1,0 +1,10 @@
+section {
+    margin: 10px;
+    border: 2px solid black;
+    border-radius: 8px;
+    background-color: wheat;
+}
+
+h2, p, h3{
+    margin: 10px;
+}
