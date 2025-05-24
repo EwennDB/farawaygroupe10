@@ -9,19 +9,19 @@ if __name__ == '__main__':
     # best = get_best_score(filepath)
     # print(best, best.evaluate())
 
-    # for i in range(5,10):
-    #     filepath = f"../Sujet/Instances_compétition/competition_0{str(i)}.txt"
+    for i in range(3,10):
+        filepath = f"../Sujet/Instances_compétition/competition_0{str(i)}.txt"
 
-    #     print(f"compétition n°{str(i)} :")
+        print(f"compétition n°{str(i)} :")
 
-    #     t = time()
-    #     best = get_best_score(filepath)
-    #     print(f"temps : {time()-t}")
-    #     print(f"score : {best.evaluate()}")
+        t = time()
+        best = get_best_score(filepath)
+        print(f"temps : {time()-t}")
+        print(f"score : {best.evaluate()}")
 
-    #     add_sol(filepath, best)
+    # #     add_sol(filepath, best)
     
-    for i in range(0,1):
+    for i in range(0,6):
         filepath = f"../Sujet/Instances_compétition/competition_1{str(i)}.txt"
 
         print(f"compétition n°1{str(i)} :")
