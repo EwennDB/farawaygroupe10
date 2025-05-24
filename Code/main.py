@@ -9,7 +9,7 @@ if __name__ == '__main__':
     # best = get_best_score(filepath)
     # print(best, best.evaluate())
 
-    # for i in range(1,10):
+    # for i in range(5,10):
     #     filepath = f"../Sujet/Instances_compétition/competition_0{str(i)}.txt"
 
     #     print(f"compétition n°{str(i)} :")
@@ -21,7 +21,7 @@ if __name__ == '__main__':
 
     #     add_sol(filepath, best)
     
-    for i in range(1,6):
+    for i in range(0,1):
         filepath = f"../Sujet/Instances_compétition/competition_1{str(i)}.txt"
 
         print(f"compétition n°1{str(i)} :")
