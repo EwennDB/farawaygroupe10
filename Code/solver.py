@@ -317,7 +317,8 @@ def get_best_score(filepath):
             #ne dépasse pas le tps
             if endTime-time() > 2:
                 print(f"try with : {score}")
-                tmp = gradient_descent_regions(tmp, regions, timeToRun = 2)
+                tmp = gradient_descent_regions(tmp, regions, timeToRun = 5)
+                tmp = gradient_descent(tmp)
             else:
                 print(f"try with : {score}")
                 tmp = gradient_descent_regions(tmp, regions, timeToRun = endTime-time())
