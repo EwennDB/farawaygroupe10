@@ -63,7 +63,6 @@ def brute_force(path_instance) :
                                             print(best)
 
                                         current_plc[0] = current_plc[1].copy()
-
     print(best)
 
 def virer_inutile(filepath):
@@ -297,7 +296,7 @@ def get_best_score(filepath):
 
     #se limite à 60 secondes
     startTime = time()
-    timeToRun = 3600
+    timeToRun = 59.9
     endTime = startTime + timeToRun
 
     while time() <= endTime:
@@ -316,21 +315,21 @@ def get_best_score(filepath):
         if floor < score:
             #ne dépasse pas le tps
             if endTime-time() > 2:
-                print(f"try with : {score}")
+                # print(f"try with : {score}")
                 tmp = gradient_descent_regions(tmp, regions, timeToRun = 5)
                 tmp = gradient_descent(tmp)
             else:
-                print(f"try with : {score}")
+                # print(f"try with : {score}")
                 tmp = gradient_descent_regions(tmp, regions, timeToRun = endTime-time())
             if best_score < tmp.evaluate():
                 best = tmp.copy()
                 best_score = best.evaluate()
                 floor = int(best_score*2/3)
-                print(f"new floor : {floor}")
-                print(f"NEW NEW best : {best_score}")
+                # print(f"new floor : {floor}")
+                # print(f"NEW NEW best : {best_score}")
 
     nnnnnnnnn()
 
-    # print(f"best : {best}")
-    # print(f"best score : {best.evaluate()}")
+    print(f"best : {best}")
+    print(f"best score : {best.evaluate()}")
     return best
