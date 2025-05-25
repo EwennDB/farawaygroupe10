@@ -297,7 +297,7 @@ def get_best_score(filepath):
 
     #se limite à 60 secondes
     startTime = time()
-    timeToRun = 600
+    timeToRun = 3600
     endTime = startTime + timeToRun
 
     while time() <= endTime:
